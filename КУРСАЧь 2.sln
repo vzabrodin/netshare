@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.ClientConsole", "NetShare.ClientConsole\NetShare.ClientConsole.csproj", "{FE233A64-0234-45DB-BA54-9470CD0EFBB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.WLAN", "NetShare.WLAN\NetShare.WLAN.csproj", "{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.Host", "NetShare.Host\NetShare.Host.csproj", "{E5966C38-D683-46F6-B21A-47683BF64B6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.ICS", "NetShare.ICS\NetShare.ICS.csproj", "{70B14F1D-D4AE-4BB7-83FD-7853BA30DFCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.Cilent", "NetShare.Cilent\NetShare.Cilent.csproj", "{0A6A2980-ECCC-467C-93F1-851860FD2AF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.Service", "NetShare.Service\NetShare.Service.csproj", "{7C452E1B-410C-485F-82B9-C99017C9EE98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5966C38-D683-46F6-B21A-47683BF64B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5966C38-D683-46F6-B21A-47683BF64B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5966C38-D683-46F6-B21A-47683BF64B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5966C38-D683-46F6-B21A-47683BF64B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B14F1D-D4AE-4BB7-83FD-7853BA30DFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B14F1D-D4AE-4BB7-83FD-7853BA30DFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B14F1D-D4AE-4BB7-83FD-7853BA30DFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B14F1D-D4AE-4BB7-83FD-7853BA30DFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6A2980-ECCC-467C-93F1-851860FD2AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6A2980-ECCC-467C-93F1-851860FD2AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6A2980-ECCC-467C-93F1-851860FD2AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6A2980-ECCC-467C-93F1-851860FD2AF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C452E1B-410C-485F-82B9-C99017C9EE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C452E1B-410C-485F-82B9-C99017C9EE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C452E1B-410C-485F-82B9-C99017C9EE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C452E1B-410C-485F-82B9-C99017C9EE98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

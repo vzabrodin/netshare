@@ -1,0 +1,6 @@
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager\bin\Debug\HostedNetworkManager.exe.config
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager\bin\Debug\HostedNetworkManager.exe
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager\bin\Debug\HostedNetworkManager.pdb
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager\obj\Debug\HostedNetworkManager.csprojResolveAssemblyReference.cache
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager\obj\Debug\HostedNetworkManager.exe
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager\obj\Debug\HostedNetworkManager.pdb

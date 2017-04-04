@@ -1,0 +1,9 @@
+﻿namespace NetShare.Wlan.WinAPI
+{
+	public enum WLAN_HOSTED_NETWORK_NOTIFICATION_CODE : uint
+	{
+		STATE_CHANGE = 0x00001000,
+		PEER_STATE_CHANGE,
+		RADIO_STATE_CHANGE,
+	}
+}

@@ -1,0 +1,14 @@
+﻿namespace NetShare.Wlan.WinAPI
+{
+	public enum WLAN_NOTIFICATION_SOURCE: uint
+	{
+		NONE		= 0,
+		ONEX		= 0X00000004,
+		ACM			= 0X00000008,
+		MSM			= 0X00000010,
+		SECURITY	= 0X00000020,
+		IHV			= 0X00000040,
+		HNWK		= 0X00000080,
+		ALL			= 0X0000FFFF,
+	}
+}

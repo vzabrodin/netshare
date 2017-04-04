@@ -1,0 +1,12 @@
+﻿namespace NetShare.Wlan.WinAPI
+{
+	public enum WLAN_CONNECTION_MODE
+	{
+		PROFILE,
+		TEMPORARY_PROFILE,
+		DISCOVERY_SECURE,
+		DISCOVERY_UNCECURE,
+		AUTO,
+		IVALID,
+	}
+}

@@ -1,0 +1,5 @@
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager.Wlan\bin\Debug\HostedNetworkManager.Wlan.dll
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager.Wlan\bin\Debug\HostedNetworkManager.Wlan.pdb
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager.Wlan\obj\Debug\HostedNetworkManager.Wlan.csprojResolveAssemblyReference.cache
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager.Wlan\obj\Debug\HostedNetworkManager.Wlan.dll
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\HostedNetworkManager.Wlan\obj\Debug\HostedNetworkManager.Wlan.pdb
