@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.IO;
+using Microsoft.Win32;
 
 namespace NetShare.Host
 {
-	[DataContract]
 	public class Configuration
 	{
-		private static string _configPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\NesShare\\config.json";
-		private static DataContractJsonSerializer _jsonFormatter = new DataContractJsonSerializer(typeof(Configuration));
-
-		[DataMember]
 		public bool IsAutostart { get; set; }
 
-		[DataMember]
 		public Guid SharedConnection { get; set; }
 
 		public Configuration(bool isAutostart, Guid sharedConnection)
@@ -29,29 +21,18 @@ namespace NetShare.Host
 
 		public void Write()
 		{
-			new FileInfo(_configPath).Directory.Create();
-			using (Stream stream = new FileStream(_configPath, FileMode.Create, FileAccess.Write))
-			{
-				_jsonFormatter.WriteObject(stream, this);
-			}
+			var q = Registry.LocalMachine.OpenSubKey("SOFTWARE");
+			var w = q.GetSubKeyNames();
+			var key = Registry.LocalMachine.OpenSubKey("SOFTWARE", true).CreateSubKey("NetShare");
+			key.SetValue("Autostart", IsAutostart.ToString());
+			key.SetValue("SharedConnectionGuid", SharedConnection);
+			key.Close();
 		}
 
-		public bool Read()
+		public void Read()
 		{
-			try
-			{
-				using (Stream stream = new FileStream(_configPath, FileMode.Open, FileAccess.Read))
-				{
-					var cfg = (Configuration)_jsonFormatter.ReadObject(stream);
-					IsAutostart = cfg.IsAutostart;
-					SharedConnection = cfg.SharedConnection;
-					return true;
-				}
-			}
-			catch
-			{
-				return false;
-			}
+			IsAutostart = bool.Parse(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("NetShare").GetValue("Autostart", false).ToString());
+			SharedConnection = Guid.Parse(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("NetShare").GetValue("SharedConnectionGuid", Guid.Empty).ToString());
 		}
 	}
 }

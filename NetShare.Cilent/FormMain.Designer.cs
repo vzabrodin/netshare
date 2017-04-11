@@ -28,25 +28,31 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabSettings = new System.Windows.Forms.TabPage();
-			this.lblIsStarted = new System.Windows.Forms.Label();
-			this.btnSave = new System.Windows.Forms.Button();
-			this.btnStop = new System.Windows.Forms.Button();
-			this.btnStart = new System.Windows.Forms.Button();
-			this.cmbShareAdapter = new System.Windows.Forms.ComboBox();
+			this.panSettingsInput = new System.Windows.Forms.Panel();
+			this.txtSSID = new System.Windows.Forms.TextBox();
+			this.chckIsAutostart = new System.Windows.Forms.CheckBox();
+			this.lblSSID = new System.Windows.Forms.Label();
+			this.txtPassword = new System.Windows.Forms.TextBox();
+			this.lblPassword = new System.Windows.Forms.Label();
 			this.chckPasswordHide = new System.Windows.Forms.CheckBox();
 			this.lblSharedConnection = new System.Windows.Forms.Label();
-			this.lblPassword = new System.Windows.Forms.Label();
-			this.txtPassword = new System.Windows.Forms.TextBox();
-			this.txtSSID = new System.Windows.Forms.TextBox();
-			this.lblSSID = new System.Windows.Forms.Label();
+			this.cmbShareAdapter = new System.Windows.Forms.ComboBox();
+			this.lblIsStarted = new System.Windows.Forms.Label();
+			this.btnStop = new System.Windows.Forms.Button();
+			this.btnStart = new System.Windows.Forms.Button();
 			this.tabConnectedPeers = new System.Windows.Forms.TabPage();
-			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.chckIsAutostart = new System.Windows.Forms.CheckBox();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.hostName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.macAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabControl1.SuspendLayout();
 			this.tabSettings.SuspendLayout();
+			this.panSettingsInput.SuspendLayout();
 			this.tabConnectedPeers.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -57,6 +63,7 @@
 			this.tabControl1.Controls.Add(this.tabSettings);
 			this.tabControl1.Controls.Add(this.tabConnectedPeers);
 			this.tabControl1.Location = new System.Drawing.Point(12, 12);
+			this.tabControl1.Multiline = true;
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(360, 237);
@@ -64,18 +71,10 @@
 			// 
 			// tabSettings
 			// 
-			this.tabSettings.Controls.Add(this.chckIsAutostart);
+			this.tabSettings.Controls.Add(this.panSettingsInput);
 			this.tabSettings.Controls.Add(this.lblIsStarted);
-			this.tabSettings.Controls.Add(this.btnSave);
 			this.tabSettings.Controls.Add(this.btnStop);
 			this.tabSettings.Controls.Add(this.btnStart);
-			this.tabSettings.Controls.Add(this.cmbShareAdapter);
-			this.tabSettings.Controls.Add(this.chckPasswordHide);
-			this.tabSettings.Controls.Add(this.lblSharedConnection);
-			this.tabSettings.Controls.Add(this.lblPassword);
-			this.tabSettings.Controls.Add(this.txtPassword);
-			this.tabSettings.Controls.Add(this.txtSSID);
-			this.tabSettings.Controls.Add(this.lblSSID);
 			this.tabSettings.Location = new System.Drawing.Point(4, 22);
 			this.tabSettings.Name = "tabSettings";
 			this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
@@ -84,61 +83,75 @@
 			this.tabSettings.Text = "Settings";
 			this.tabSettings.UseVisualStyleBackColor = true;
 			// 
-			// lblIsStarted
+			// panSettingsInput
 			// 
-			this.lblIsStarted.AutoSize = true;
-			this.lblIsStarted.Location = new System.Drawing.Point(198, 187);
-			this.lblIsStarted.Name = "lblIsStarted";
-			this.lblIsStarted.Size = new System.Drawing.Size(35, 13);
-			this.lblIsStarted.TabIndex = 8;
-			this.lblIsStarted.Text = "label4";
-			// 
-			// btnSave
-			// 
-			this.btnSave.Location = new System.Drawing.Point(271, 182);
-			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 7;
-			this.btnSave.Text = "Save";
-			this.btnSave.UseVisualStyleBackColor = true;
-			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-			// 
-			// btnStop
-			// 
-			this.btnStop.Location = new System.Drawing.Point(87, 182);
-			this.btnStop.Name = "btnStop";
-			this.btnStop.Size = new System.Drawing.Size(75, 23);
-			this.btnStop.TabIndex = 6;
-			this.btnStop.Text = "Stop";
-			this.btnStop.UseVisualStyleBackColor = true;
-			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-			// 
-			// btnStart
-			// 
-			this.btnStart.Location = new System.Drawing.Point(6, 182);
-			this.btnStart.Name = "btnStart";
-			this.btnStart.Size = new System.Drawing.Size(75, 23);
-			this.btnStart.TabIndex = 5;
-			this.btnStart.Text = "Start";
-			this.btnStart.UseVisualStyleBackColor = true;
-			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-			// 
-			// cmbShareAdapter
-			// 
-			this.cmbShareAdapter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.panSettingsInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.cmbShareAdapter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.cmbShareAdapter.FormattingEnabled = true;
-			this.cmbShareAdapter.Location = new System.Drawing.Point(114, 58);
-			this.cmbShareAdapter.Name = "cmbShareAdapter";
-			this.cmbShareAdapter.Size = new System.Drawing.Size(232, 21);
-			this.cmbShareAdapter.TabIndex = 4;
+			this.panSettingsInput.Controls.Add(this.txtSSID);
+			this.panSettingsInput.Controls.Add(this.chckIsAutostart);
+			this.panSettingsInput.Controls.Add(this.lblSSID);
+			this.panSettingsInput.Controls.Add(this.txtPassword);
+			this.panSettingsInput.Controls.Add(this.lblPassword);
+			this.panSettingsInput.Controls.Add(this.chckPasswordHide);
+			this.panSettingsInput.Controls.Add(this.lblSharedConnection);
+			this.panSettingsInput.Controls.Add(this.cmbShareAdapter);
+			this.panSettingsInput.Location = new System.Drawing.Point(6, 6);
+			this.panSettingsInput.Name = "panSettingsInput";
+			this.panSettingsInput.Size = new System.Drawing.Size(340, 103);
+			this.panSettingsInput.TabIndex = 9;
+			// 
+			// txtSSID
+			// 
+			this.txtSSID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtSSID.Location = new System.Drawing.Point(111, 3);
+			this.txtSSID.Name = "txtSSID";
+			this.txtSSID.Size = new System.Drawing.Size(226, 20);
+			this.txtSSID.TabIndex = 1;
+			// 
+			// chckIsAutostart
+			// 
+			this.chckIsAutostart.AutoSize = true;
+			this.chckIsAutostart.Location = new System.Drawing.Point(111, 82);
+			this.chckIsAutostart.Name = "chckIsAutostart";
+			this.chckIsAutostart.Size = new System.Drawing.Size(68, 17);
+			this.chckIsAutostart.TabIndex = 5;
+			this.chckIsAutostart.Text = "Autostart";
+			this.chckIsAutostart.UseVisualStyleBackColor = true;
+			// 
+			// lblSSID
+			// 
+			this.lblSSID.AutoSize = true;
+			this.lblSSID.Location = new System.Drawing.Point(3, 6);
+			this.lblSSID.Name = "lblSSID";
+			this.lblSSID.Size = new System.Drawing.Size(35, 13);
+			this.lblSSID.TabIndex = 0;
+			this.lblSSID.Text = "SSID:";
+			// 
+			// txtPassword
+			// 
+			this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtPassword.Location = new System.Drawing.Point(111, 29);
+			this.txtPassword.Name = "txtPassword";
+			this.txtPassword.Size = new System.Drawing.Size(205, 20);
+			this.txtPassword.TabIndex = 2;
+			this.txtPassword.UseSystemPasswordChar = true;
+			// 
+			// lblPassword
+			// 
+			this.lblPassword.AutoSize = true;
+			this.lblPassword.Location = new System.Drawing.Point(3, 32);
+			this.lblPassword.Name = "lblPassword";
+			this.lblPassword.Size = new System.Drawing.Size(56, 13);
+			this.lblPassword.TabIndex = 2;
+			this.lblPassword.Text = "Password:";
 			// 
 			// chckPasswordHide
 			// 
 			this.chckPasswordHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.chckPasswordHide.AutoSize = true;
-			this.chckPasswordHide.Location = new System.Drawing.Point(331, 35);
+			this.chckPasswordHide.Location = new System.Drawing.Point(322, 32);
 			this.chckPasswordHide.Name = "chckPasswordHide";
 			this.chckPasswordHide.Size = new System.Drawing.Size(15, 14);
 			this.chckPasswordHide.TabIndex = 3;
@@ -148,52 +161,56 @@
 			// lblSharedConnection
 			// 
 			this.lblSharedConnection.AutoSize = true;
-			this.lblSharedConnection.Location = new System.Drawing.Point(6, 61);
+			this.lblSharedConnection.Location = new System.Drawing.Point(3, 58);
 			this.lblSharedConnection.Name = "lblSharedConnection";
 			this.lblSharedConnection.Size = new System.Drawing.Size(100, 13);
 			this.lblSharedConnection.TabIndex = 2;
 			this.lblSharedConnection.Text = "Shared connection:";
 			// 
-			// lblPassword
+			// cmbShareAdapter
 			// 
-			this.lblPassword.AutoSize = true;
-			this.lblPassword.Location = new System.Drawing.Point(6, 35);
-			this.lblPassword.Name = "lblPassword";
-			this.lblPassword.Size = new System.Drawing.Size(56, 13);
-			this.lblPassword.TabIndex = 2;
-			this.lblPassword.Text = "Password:";
-			// 
-			// txtPassword
-			// 
-			this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.cmbShareAdapter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtPassword.Location = new System.Drawing.Point(114, 32);
-			this.txtPassword.Name = "txtPassword";
-			this.txtPassword.Size = new System.Drawing.Size(211, 20);
-			this.txtPassword.TabIndex = 1;
-			this.txtPassword.UseSystemPasswordChar = true;
+			this.cmbShareAdapter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbShareAdapter.FormattingEnabled = true;
+			this.cmbShareAdapter.Location = new System.Drawing.Point(111, 55);
+			this.cmbShareAdapter.Name = "cmbShareAdapter";
+			this.cmbShareAdapter.Size = new System.Drawing.Size(226, 21);
+			this.cmbShareAdapter.TabIndex = 4;
 			// 
-			// txtSSID
+			// lblIsStarted
 			// 
-			this.txtSSID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.txtSSID.Location = new System.Drawing.Point(114, 6);
-			this.txtSSID.Name = "txtSSID";
-			this.txtSSID.Size = new System.Drawing.Size(232, 20);
-			this.txtSSID.TabIndex = 1;
+			this.lblIsStarted.Location = new System.Drawing.Point(265, 187);
+			this.lblIsStarted.Name = "lblIsStarted";
+			this.lblIsStarted.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.lblIsStarted.Size = new System.Drawing.Size(81, 13);
+			this.lblIsStarted.TabIndex = 8;
+			this.lblIsStarted.Text = "{ServiceStatus}";
+			this.lblIsStarted.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
-			// lblSSID
+			// btnStop
 			// 
-			this.lblSSID.AutoSize = true;
-			this.lblSSID.Location = new System.Drawing.Point(6, 9);
-			this.lblSSID.Name = "lblSSID";
-			this.lblSSID.Size = new System.Drawing.Size(35, 13);
-			this.lblSSID.TabIndex = 0;
-			this.lblSSID.Text = "SSID:";
+			this.btnStop.Location = new System.Drawing.Point(9, 182);
+			this.btnStop.Name = "btnStop";
+			this.btnStop.Size = new System.Drawing.Size(75, 23);
+			this.btnStop.TabIndex = 7;
+			this.btnStop.Text = "Stop";
+			this.btnStop.UseVisualStyleBackColor = true;
+			this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+			// 
+			// btnStart
+			// 
+			this.btnStart.Location = new System.Drawing.Point(9, 182);
+			this.btnStart.Name = "btnStart";
+			this.btnStart.Size = new System.Drawing.Size(75, 23);
+			this.btnStart.TabIndex = 6;
+			this.btnStart.Text = "Start";
+			this.btnStart.UseVisualStyleBackColor = true;
+			this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
 			// 
 			// tabConnectedPeers
 			// 
-			this.tabConnectedPeers.Controls.Add(this.listBox1);
+			this.tabConnectedPeers.Controls.Add(this.dataGridView1);
 			this.tabConnectedPeers.Location = new System.Drawing.Point(4, 22);
 			this.tabConnectedPeers.Name = "tabConnectedPeers";
 			this.tabConnectedPeers.Padding = new System.Windows.Forms.Padding(3);
@@ -202,23 +219,54 @@
 			this.tabConnectedPeers.Text = "Connected peers";
 			this.tabConnectedPeers.UseVisualStyleBackColor = true;
 			// 
-			// listBox1
+			// dataGridView1
 			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Location = new System.Drawing.Point(6, 6);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(340, 199);
-			this.listBox1.TabIndex = 0;
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AllowUserToResizeColumns = false;
+			this.dataGridView1.AllowUserToResizeRows = false;
+			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+			this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.hostName,
+            this.ipAddress,
+            this.macAddress});
+			this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+			this.dataGridView1.MultiSelect = false;
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowHeadersVisible = false;
+			this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView1.ShowCellErrors = false;
+			this.dataGridView1.ShowCellToolTips = false;
+			this.dataGridView1.ShowEditingIcon = false;
+			this.dataGridView1.ShowRowErrors = false;
+			this.dataGridView1.Size = new System.Drawing.Size(340, 199);
+			this.dataGridView1.TabIndex = 0;
 			// 
-			// chckIsAutostart
+			// hostName
 			// 
-			this.chckIsAutostart.AutoSize = true;
-			this.chckIsAutostart.Location = new System.Drawing.Point(114, 85);
-			this.chckIsAutostart.Name = "chckIsAutostart";
-			this.chckIsAutostart.Size = new System.Drawing.Size(68, 17);
-			this.chckIsAutostart.TabIndex = 9;
-			this.chckIsAutostart.Text = "Autostart";
-			this.chckIsAutostart.UseVisualStyleBackColor = true;
+			this.hostName.HeaderText = "Host Name";
+			this.hostName.Name = "hostName";
+			this.hostName.ReadOnly = true;
+			// 
+			// ipAddress
+			// 
+			this.ipAddress.HeaderText = "IP";
+			this.ipAddress.Name = "ipAddress";
+			this.ipAddress.ReadOnly = true;
+			// 
+			// macAddress
+			// 
+			this.macAddress.HeaderText = "MAC";
+			this.macAddress.Name = "macAddress";
+			this.macAddress.ReadOnly = true;
 			// 
 			// FormMain
 			// 
@@ -227,13 +275,18 @@
 			this.ClientSize = new System.Drawing.Size(384, 261);
 			this.Controls.Add(this.tabControl1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.Name = "FormMain";
 			this.Text = "NetShare";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
+			this.Load += new System.EventHandler(this.FormMain_Load);
 			this.tabControl1.ResumeLayout(false);
 			this.tabSettings.ResumeLayout(false);
-			this.tabSettings.PerformLayout();
+			this.panSettingsInput.ResumeLayout(false);
+			this.panSettingsInput.PerformLayout();
 			this.tabConnectedPeers.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -252,10 +305,13 @@
 		private System.Windows.Forms.Label lblSharedConnection;
 		private System.Windows.Forms.Button btnStop;
 		private System.Windows.Forms.Button btnStart;
-		private System.Windows.Forms.Button btnSave;
-		private System.Windows.Forms.ListBox listBox1;
 		private System.Windows.Forms.Label lblIsStarted;
 		private System.Windows.Forms.CheckBox chckIsAutostart;
+		private System.Windows.Forms.Panel panSettingsInput;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn hostName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ipAddress;
+		private System.Windows.Forms.DataGridViewTextBoxColumn macAddress;
 	}
 }
 

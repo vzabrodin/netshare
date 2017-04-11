@@ -117,11 +117,11 @@ namespace NetShare.Wlan.WinAPI
 			[Out] out WLAN_HOSTED_NETWORK_REASON pFailReason,
 			IntPtr pReserved);
 
-		[DllImport("wlanapi.dll", EntryPoint = "WlanHostedNetworkQueryStatus")]
-		public static extern uint WlanHostedNetworkQueryStatus(
-			IntPtr hClientHandle,
-			[Out] out WLAN_HOSTED_NETWORK_STATUS pWlanHostedNetworkStatus,
-			IntPtr pReserved);
+		[DllImport("Wlanapi.dll", SetLastError = true)]
+		public static extern UInt32 WlanHostedNetworkQueryStatus(
+			[In] IntPtr hClientHandle,
+			[Out] out IntPtr ppWlanHostedNetworkStatus,
+			[In, Out] IntPtr pvReserved);
 
 		[DllImport("wlanapi.dll", EntryPoint = "WlanHostedNetworkRefreshSecuritySettings")]
 		public static extern uint WlanHostedNetworkRefreshSecuritySettings(

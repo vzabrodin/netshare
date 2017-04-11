@@ -39,10 +39,12 @@
 			// 
 			// serviceInstaller1
 			// 
+			this.serviceInstaller1.Description = "Hosted Network Service";
+			this.serviceInstaller1.DisplayName = "NetShare";
 			this.serviceInstaller1.ServiceName = "NetShareService";
 			this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
 			// 
-			// ProjectInstaller
+			// ServiceInstaller
 			// 
 			this.Installers.AddRange(new System.Configuration.Install.Installer[] {
             this.serviceProcessInstaller1,

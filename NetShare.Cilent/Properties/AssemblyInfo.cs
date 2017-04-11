@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("NetShare.Cilent")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("NetShare")]
+[assembly: AssemblyDescription("Hosted Network Manager")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NetShare.Cilent")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Doge Software")]
+[assembly: AssemblyProduct("NetShare")]
+[assembly: AssemblyCopyright("Copyright © Vitaliy Zabrodin 2017")]
+[assembly: AssemblyTrademark("Doge")]
 [assembly: AssemblyCulture("")]
 
 // Параметр ComVisible со значением FALSE делает типы в сборке невидимыми 

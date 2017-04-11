@@ -5,7 +5,7 @@ using NetShare.ICS;
 namespace NetShare.Host
 {
 	[DataContract]
-	public class SharableConnection : IComparable<SharableConnection>
+	public class SharableConnection : IComparable<SharableConnection>, IEquatable<SharableConnection>, IEquatable<Guid>
 	{
 		public SharableConnection() { }
 
@@ -33,6 +33,16 @@ namespace NetShare.Host
 		public int CompareTo(SharableConnection other)
 		{
 			return Guid.CompareTo(other.Guid);
+		}
+
+		public bool Equals(SharableConnection other)
+		{
+			return Guid.Equals(other.Guid);
+		}
+
+		public bool Equals(Guid other)
+		{
+			return Guid.Equals(other);
 		}
 	}
 }

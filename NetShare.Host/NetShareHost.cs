@@ -19,7 +19,10 @@ namespace NetShare.Host
 
 		public delegate void GenericEvent(NetShareHost hostedNetworkManager);
 
-		public event GenericEvent OnConnectionsListChanged;
+		public event GenericEvent ConnectionsListChanged;
+		public event GenericEvent HostedNetworkStarted;
+		public event GenericEvent HostedNetworkStopped;
+		public event GenericEvent HostedNetworkAvailable;
 
 		public NetShareHost()
 		{
@@ -29,19 +32,64 @@ namespace NetShare.Host
 			_wlanManager.StationJoin += _wlanManager_StationStateChange;
 			_wlanManager.StationLeave += _wlanManager_StationStateChange;
 			_wlanManager.StationStateChange += _wlanManager_StationStateChange;
+			_wlanManager.HostedNetworkStarted += _wlanManager_HostedNetworkStarted;
+			_wlanManager.HostedNetworkStopped += _wlanManager_HostedNetworkStopped;
+			_wlanManager.HostedNetworkAvailable += _wlanManager_HostedNetworkAvailable;
+		}
+
+		private void _wlanManager_HostedNetworkAvailable(object sender, EventArgs e)
+		{
+			if (HostedNetworkAvailable != null)
+			{
+				HostedNetworkAvailable(this);
+			}
+		}
+
+		#region "Event Handlers"
+
+		private void _wlanManager_HostedNetworkStopped(object sender, EventArgs e)
+		{
+			if (HostedNetworkStopped != null)
+			{
+				HostedNetworkStopped(this);
+			}
+		}
+
+		private void _wlanManager_HostedNetworkStarted(object sender, EventArgs e)
+		{
+			if (HostedNetworkStarted != null)
+			{
+				HostedNetworkStarted(this);
+			}
 		}
 
 		private void _wlanManager_StationStateChange(object sender, EventArgs e)
 		{
-			if (OnConnectionsListChanged != null)
+			if (ConnectionsListChanged != null)
 			{
-				OnConnectionsListChanged(this);
+				ConnectionsListChanged(this);
 			}
 		}
+
+		#endregion
 
 		public string GetLastError()
 		{
 			return _lastErrorMessage;
+		}
+
+		public bool Start(Guid sharedConnectionGuid)
+		{
+			var conns = GetSharableConnections();
+			SharableConnection sharedConnection = null;
+			sharedConnection = (from c in conns
+								where c.Guid == sharedConnectionGuid
+								select c).FirstOrDefault();
+			if (sharedConnection == null)
+			{
+				return false;
+			}
+			return Start(sharedConnection);
 		}
 
 		public bool Start(SharableConnection sharedConnection)
@@ -174,7 +222,6 @@ namespace NetShare.Host
 			{
 				foreach (var conn in connections)
 				{
-					//if (conn.IsConnected && conn.IsSupported)
 					if (conn.IsSupported)
 					{
 						yield return new SharableConnection(conn);
@@ -214,15 +261,18 @@ namespace NetShare.Host
 			}
 		}
 
-		public bool IsStarted()
+		public bool IsStarted
 		{
-			try
+			get
 			{
-				return _wlanManager.IsHostedNetworkStarted;
-			}
-			catch
-			{
-				return false;
+				try
+				{
+					return _wlanManager.IsHostedNetworkStarted;
+				}
+				catch
+				{
+					return false;
+				}
 			}
 		}
 

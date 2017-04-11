@@ -1,3 +1,7 @@
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.csprojResolveAssemblyReference.cache
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.NetShareService.resources
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.ServiceInstaller.resources
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.csproj.GenerateResource.Cache
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe.config
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.pdb
@@ -7,9 +11,5 @@ C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShar
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Host.pdb
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Wlan.pdb
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.ICS.pdb
-C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.csprojResolveAssemblyReference.cache
-C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.NetShareService.resources
-C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.csproj.GenerateResource.Cache
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.exe
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.pdb
-C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\obj\Debug\NetShare.Service.ServiceInstaller.resources

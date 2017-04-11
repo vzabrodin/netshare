@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("NetShare.Service")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("NetShare Service")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NetShare.Service")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("Doge Software")]
+[assembly: AssemblyProduct("NetShare")]
+[assembly: AssemblyCopyright("Copyright © Vitaliy Zabrodin 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

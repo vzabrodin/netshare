@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("WLAN API Wrapper")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Doge Software")]
-[assembly: AssemblyProduct("NetShare.Wlan")]
+[assembly: AssemblyProduct("NetShare")]
 [assembly: AssemblyCopyright("Copyright © Doge Sotfware 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

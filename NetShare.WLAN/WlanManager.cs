@@ -10,8 +10,6 @@ namespace NetShare.Wlan
 		private IntPtr _WlanHandle;
 		private uint _ServerVersion;
 		private WlanApi.WLAN_NOTIFICATION_CALLBACK _notificationCallback;
-		private WLAN_HOSTED_NETWORK_STATE _HostedNetworkState;
-		protected Dictionary<string, WlanStation> _Stations = new Dictionary<string, WlanStation>();
 
 		public WlanManager()
 		{
@@ -70,7 +68,6 @@ namespace NetShare.Wlan
 
 		protected void onHostedNetworkStarted()
 		{
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.ACTIVE;
 			if (HostedNetworkStarted != null)
 			{
 				HostedNetworkStarted(this, EventArgs.Empty);
@@ -79,8 +76,6 @@ namespace NetShare.Wlan
 
 		protected void onHostedNetworkStopped()
 		{
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.IDLE;
-
 			if (HostedNetworkStopped != null)
 			{
 				HostedNetworkStopped(this, EventArgs.Empty);
@@ -89,8 +84,6 @@ namespace NetShare.Wlan
 
 		protected void onHostedNetworkAvailable()
 		{
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.IDLE;
-
 			if (HostedNetworkAvailable != null)
 			{
 				HostedNetworkAvailable(this, EventArgs.Empty);
@@ -101,7 +94,6 @@ namespace NetShare.Wlan
 		{
 
 			var pStation = new WlanStation(stationState);
-			_Stations[pStation.MacAddress] = pStation;
 
 			if (StationJoin != null)
 			{
@@ -111,8 +103,6 @@ namespace NetShare.Wlan
 
 		protected void onStationLeave(WLAN_HOSTED_NETWORK_PEER_STATE stationState)
 		{
-			_Stations.Remove(WlanUtils.ToString(stationState.PeerMacAddress));
-
 			if (StationLeave != null)
 			{
 				StationLeave(this, EventArgs.Empty);
@@ -222,8 +212,6 @@ namespace NetShare.Wlan
 					out failReason,
 					IntPtr.Zero));
 
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.ACTIVE;
-
 			return failReason;
 		}
 
@@ -235,8 +223,6 @@ namespace NetShare.Wlan
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
-
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.IDLE;
 
 			return failReason;
 		}
@@ -250,8 +236,6 @@ namespace NetShare.Wlan
 					out failReason,
 					IntPtr.Zero));
 
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.ACTIVE;
-
 			return failReason;
 		}
 
@@ -263,8 +247,6 @@ namespace NetShare.Wlan
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
-
-			_HostedNetworkState = WLAN_HOSTED_NETWORK_STATE.IDLE;
 
 			return failReason;
 		}
@@ -314,12 +296,16 @@ namespace NetShare.Wlan
 
 		public WLAN_HOSTED_NETWORK_STATUS QueryStatus()
 		{
-			WLAN_HOSTED_NETWORK_STATUS status;
+			IntPtr ptr = new IntPtr();
+
 			WlanUtils.ThrowOnWin32Error(
 				WlanApi.WlanHostedNetworkQueryStatus(
 					_WlanHandle,
-					out status,
+					out ptr,
 					IntPtr.Zero));
+
+			var status = (WLAN_HOSTED_NETWORK_STATUS)Marshal.PtrToStructure(ptr, typeof(WLAN_HOSTED_NETWORK_STATUS));
+
 			return status;
 		}
 
@@ -413,7 +399,7 @@ namespace NetShare.Wlan
 		{
 			get
 			{
-				return _HostedNetworkState;
+				return QueryStatus().HostedNetworkState;
 			}
 		}
 
@@ -421,7 +407,33 @@ namespace NetShare.Wlan
 		{
 			get
 			{
-				return _Stations;
+				Dictionary<string, WlanStation> stations = new Dictionary<string, WlanStation>();
+
+				IntPtr ptr = new IntPtr();
+
+				WlanUtils.ThrowOnWin32Error(
+					WlanApi.WlanHostedNetworkQueryStatus(
+						_WlanHandle,
+						out ptr,
+						IntPtr.Zero));
+
+				var status = (WLAN_HOSTED_NETWORK_STATUS)Marshal.PtrToStructure(ptr, typeof(WLAN_HOSTED_NETWORK_STATUS));
+
+				if (status.HostedNetworkState != WLAN_HOSTED_NETWORK_STATE.UNAVAILABLE)
+				{
+					IntPtr offset = Marshal.OffsetOf(typeof(WLAN_HOSTED_NETWORK_STATUS), "PeerList");
+
+					for (int i = 0; i < status.dwNumberOfPeers; i++)
+					{
+						var peer = (WLAN_HOSTED_NETWORK_PEER_STATE)Marshal.PtrToStructure(
+							new IntPtr(ptr.ToInt64() + offset.ToInt64()),
+							typeof(WLAN_HOSTED_NETWORK_PEER_STATE));
+						stations.Add(WlanUtils.ToString(peer.PeerMacAddress), new WlanStation(peer));
+
+						offset += Marshal.SizeOf(peer);
+					}
+				}
+				return stations;
 			}
 		}
 
@@ -429,7 +441,7 @@ namespace NetShare.Wlan
 		{
 			get
 			{
-				return (_HostedNetworkState == WLAN_HOSTED_NETWORK_STATE.ACTIVE);
+				return (HostedNetworkState == WLAN_HOSTED_NETWORK_STATE.ACTIVE);
 			}
 		}
 

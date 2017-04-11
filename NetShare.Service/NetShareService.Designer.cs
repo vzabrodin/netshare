@@ -31,8 +31,7 @@
 			// 
 			// NetShareService
 			// 
-			this.CanPauseAndContinue = true;
-			this.CanShutdown = true;
+			this.CanHandleSessionChangeEvent = true;
 			this.CanStop = false;
 			this.ServiceName = "NetShareService";
 

@@ -7,3 +7,4 @@ C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShar
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.WLAN\bin\Debug\NetShare.Wlan.pdb
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.WLAN\obj\Debug\NetShare.Wlan.dll
 C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.WLAN\obj\Debug\NetShare.Wlan.pdb
+C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.WLAN\obj\Debug\NetShare.WLAN.csprojResolveAssemblyReference.cache

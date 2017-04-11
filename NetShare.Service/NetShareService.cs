@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.ServiceModel;
 using System.ServiceProcess;
+using System.Diagnostics;
 using NetShare.Host;
 
 namespace NetShare.Service
@@ -18,14 +18,39 @@ namespace NetShare.Service
 
 		protected override void OnStart(string[] args)
 		{
+			System.Diagnostics.Debugger.Launch();
+
 			Configuration conf = new Configuration();
 			conf.Read();
-			if (!conf.IsAutostart)
-			{
-				Stop();
-				return;
-			}
 
+			if (conf.IsAutostart)
+			{
+				StartAP();
+			}
+		}
+
+		protected override void OnStop()
+		{
+			StartAP();
+		}
+
+		protected override void OnCustomCommand(int command)
+		{
+			switch (command)
+			{
+				case 200:
+					StartAP();
+					break;
+				case 201:
+					StopAP();
+					break;
+			}
+		}
+
+		private void StartAP()
+		{
+			Configuration conf = new Configuration();
+			conf.Read();
 			var conns = _netshHost.GetSharableConnections();
 			SharableConnection sharedConnection = null;
 			if (Guid.Empty != conf.SharedConnection)
@@ -40,13 +65,23 @@ namespace NetShare.Service
 			}
 			if (!_netshHost.Start(sharedConnection))
 			{
-				Stop();
+				WriteLog("Failed to start hosted network\n" + _netshHost.GetLastError());
+				throw new Exception("Failed to stop hosted network\n" + _netshHost.GetLastError());
 			}
 		}
 
-		protected override void OnStop()
+		private void StopAP()
 		{
-			_netshHost.Stop();
+			if (!_netshHost.Stop())
+			{
+				WriteLog("Failed to stop hosted network\n" + _netshHost.GetLastError());
+				throw new Exception("Failed to stop hosted network\n" + _netshHost.GetLastError());
+			}
+		}
+
+		private void WriteLog(string message)
+		{
+			EventLog.WriteEntry("NetShare Service", message, EventLogEntryType.Information);
 		}
 	}
 }

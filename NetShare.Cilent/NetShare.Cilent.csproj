@@ -35,9 +35,15 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,18 +90,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NetShare.WLAN\NetShare.WLAN.csproj">
-      <Project>{54e6cb65-4537-4fd8-adfb-7a3dbf56d936}</Project>
-      <Name>NetShare.WLAN</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NetShare.Host\NetShare.Host.csproj">
       <Project>{e5966c38-d683-46f6-b21a-47683bf64b6a}</Project>
       <Name>NetShare.Host</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetShare.ICS\NetShare.ICS.csproj">
-      <Project>{70b14f1d-d4ae-4bb7-83fd-7853ba30dfcf}</Project>
-      <Name>NetShare.ICS</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

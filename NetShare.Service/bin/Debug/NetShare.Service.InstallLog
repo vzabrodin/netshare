@@ -1,0 +1,34 @@
+﻿Installing assembly 'C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.InstallLog
+   assemblypath = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe
+Installing service NetShareService...
+Service NetShareService has been successfully installed.
+Creating EventLog source NetShareService in log Application...
+Committing assembly 'C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.InstallLog
+   assemblypath = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe
+Uninstalling assembly 'C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.InstallLog
+   assemblypath = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe
+Removing EventLog source NetShareService.
+Service NetShareService is being removed from the system...
+Service NetShareService was successfully removed from the system.
+Installing assembly 'C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.InstallLog
+   assemblypath = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe
+Installing service NetShareService...
+Service NetShareService has been successfully installed.
+Creating EventLog source NetShareService in log Application...
+Committing assembly 'C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.InstallLog
+   assemblypath = C:\Users\Zabrodin\Documents\Visual Studio 2015\Projects\КУРСАЧь 2\NetShare.Service\bin\Debug\NetShare.Service.exe
