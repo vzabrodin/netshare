@@ -1,0 +1,20 @@
+NetShare v1.00, build 100 (2017-04-01)
+======================================
+* Initial release
+
+NetShare v1.00, build 105 (2017-04-10)
+======================================
++ Recieve IPs of connected peers
++ Recieve hostnames of connected peers
+x Doesn't recieve connected peers list on configurator's start
+
+NetShare v1.00, build 124 (2017-04-12)
+======================================
++ Added max peers parameter
+x Hosted network stops on Windows's suspend but it doesn't start on wake up
+x Throws exception when the service unexpectedly closes
+
+NetShare v1.00, build 126 (2017-04-13)
+======================================
++ Added installer
+x Throws exception when the registry key doesn't exist
