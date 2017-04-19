@@ -1,6 +1,6 @@
 ﻿namespace NetShare.ICS
 {
-	public enum ICSStatus
+	public enum IcsStatus
 	{
 		DISCONNECTED,
 		CONNECTING,
