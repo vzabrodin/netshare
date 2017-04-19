@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace NetShare.Wlan.WinAPI
+namespace NetShare.WLAN.WinAPI
 {
 	[StructLayout(LayoutKind.Sequential)]
 	public struct WLAN_HOSTED_NETWORK_PEER_STATE

@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Heoted Network Manager")]
+[assembly: AssemblyTitle("Hosted Network Manager")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Doge Software")]
+[assembly: AssemblyCompany("Vitaliy Zabrodin")]
 [assembly: AssemblyProduct("NetShare")]
 [assembly: AssemblyCopyright("Copyright © Doge Software 2017")]
 [assembly: AssemblyTrademark("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.127")]
+[assembly: AssemblyFileVersion("1.0.0.127")]

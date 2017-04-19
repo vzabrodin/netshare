@@ -1,4 +1,4 @@
-﻿namespace NetShare.Wlan.WinAPI
+﻿namespace NetShare.WLAN.WinAPI
 {
 	public enum DOT11_BSS_TYPE
 	{

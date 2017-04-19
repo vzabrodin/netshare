@@ -21,9 +21,7 @@ namespace NetShare.Host
 
 		public void Write()
 		{
-			var q = Registry.LocalMachine.OpenSubKey("SOFTWARE");
-			var w = q.GetSubKeyNames();
-			var key = Registry.LocalMachine.OpenSubKey("SOFTWARE", true).CreateSubKey("NetShare");
+			var key = Registry.LocalMachine.CreateSubKey("SOFTWARE").CreateSubKey("NetShare");
 			key.SetValue("Autostart", IsAutostart.ToString());
 			key.SetValue("SharedConnectionGuid", SharedConnection);
 			key.Close();
@@ -31,8 +29,9 @@ namespace NetShare.Host
 
 		public void Read()
 		{
-			IsAutostart = bool.Parse(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("NetShare").GetValue("Autostart", false).ToString());
-			SharedConnection = Guid.Parse(Registry.LocalMachine.OpenSubKey("SOFTWARE").OpenSubKey("NetShare").GetValue("SharedConnectionGuid", Guid.Empty).ToString());
+			var key = Registry.LocalMachine.CreateSubKey("SOFTWARE").CreateSubKey("NetShare");
+			IsAutostart = bool.Parse(key.GetValue("Autostart", false).ToString());
+			SharedConnection = Guid.Parse(key.GetValue("SharedConnectionGuid", Guid.Empty).ToString());
 		}
 	}
 }

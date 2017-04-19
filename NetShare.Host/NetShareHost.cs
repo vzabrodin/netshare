@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using NetShare.ICS;
-using NetShare.Wlan;
+using NetShare.WLAN;
 using System.ServiceModel;
 
 namespace NetShare.Host
 {
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-	public class NetShareHost// : INetShareHost
+	public class NetShareHost
 	{
 		private WlanManager _wlanManager;
-		private IcsManager _icsManager;
+		private ICSManager _icsManager;
 
 		private SharableConnection _currentSharedConnection;
 
@@ -27,11 +27,11 @@ namespace NetShare.Host
 		public NetShareHost()
 		{
 			_wlanManager = new WlanManager();
-			_icsManager = new IcsManager();
+			_icsManager = new ICSManager();
 
 			_wlanManager.StationJoin += _wlanManager_StationStateChange;
 			_wlanManager.StationLeave += _wlanManager_StationStateChange;
-			_wlanManager.StationStateChange += _wlanManager_StationStateChange;
+			//_wlanManager.StationStateChange += _wlanManager_StationStateChange;
 			_wlanManager.HostedNetworkStarted += _wlanManager_HostedNetworkStarted;
 			_wlanManager.HostedNetworkStopped += _wlanManager_HostedNetworkStopped;
 			_wlanManager.HostedNetworkAvailable += _wlanManager_HostedNetworkAvailable;
@@ -205,14 +205,14 @@ namespace NetShare.Host
 
 		public IEnumerable<SharableConnection> GetSharableConnections()
 		{
-			List<Ics> connections;
+			List<ICSConnection> connections;
 			try
 			{
 				connections = _icsManager.Connections;
 			}
 			catch
 			{
-				connections = new List<Ics>();
+				connections = new List<ICSConnection>();
 			}
 
 			// Empty item to signify No Connection Sharing

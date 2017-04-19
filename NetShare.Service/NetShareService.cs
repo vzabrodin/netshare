@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.ServiceProcess;
 using System.Diagnostics;
 using NetShare.Host;
@@ -8,17 +7,18 @@ namespace NetShare.Service
 {
 	public partial class NetShareService : ServiceBase
 	{
+		private bool _stoppedSuspend;
 		private NetShareHost _netshHost = null;
 
 		public NetShareService()
 		{
 			_netshHost = new NetShareHost();
 			InitializeComponent();
-		}
+		}		
 
 		protected override void OnStart(string[] args)
 		{
-			System.Diagnostics.Debugger.Launch();
+			if (args.Length == 1 && args[0] == "/noautostart") return;
 
 			Configuration conf = new Configuration();
 			conf.Read();
@@ -32,6 +32,24 @@ namespace NetShare.Service
 		protected override void OnStop()
 		{
 			StartAP();
+		}
+
+		protected override bool OnPowerEvent(PowerBroadcastStatus powerStatus)
+		{
+			switch (powerStatus)
+			{
+				case PowerBroadcastStatus.Suspend:
+					_stoppedSuspend = _netshHost.IsStarted;
+					StopAP();
+					break;
+				case PowerBroadcastStatus.ResumeSuspend:
+					if (_stoppedSuspend)
+					{
+						StartAP();
+					}
+					break;
+			}
+			return base.OnPowerEvent(powerStatus);
 		}
 
 		protected override void OnCustomCommand(int command)
@@ -51,22 +69,13 @@ namespace NetShare.Service
 		{
 			Configuration conf = new Configuration();
 			conf.Read();
-			var conns = _netshHost.GetSharableConnections();
-			SharableConnection sharedConnection = null;
-			if (Guid.Empty != conf.SharedConnection)
+			if (!_netshHost.Start(conf.SharedConnection))
 			{
-				sharedConnection = (from c in conns
-									where c.Guid == conf.SharedConnection
-									select c).FirstOrDefault();
-				if (sharedConnection == null)
-				{
-					sharedConnection = conns.First();
-				}
-			}
-			if (!_netshHost.Start(sharedConnection))
-			{
-				WriteLog("Failed to start hosted network\n" + _netshHost.GetLastError());
 				throw new Exception("Failed to stop hosted network\n" + _netshHost.GetLastError());
+			}
+			else
+			{
+				WriteLog("Hosted network started successfully\n");
 			}
 		}
 
@@ -74,14 +83,17 @@ namespace NetShare.Service
 		{
 			if (!_netshHost.Stop())
 			{
-				WriteLog("Failed to stop hosted network\n" + _netshHost.GetLastError());
 				throw new Exception("Failed to stop hosted network\n" + _netshHost.GetLastError());
+			}
+			else
+			{
+				WriteLog("Hosted network stopped successfully\n");
 			}
 		}
 
 		private void WriteLog(string message)
 		{
-			EventLog.WriteEntry("NetShare Service", message, EventLogEntryType.Information);
+			EventLog.WriteEntry(Properties.Resources.ServiceName, message, EventLogEntryType.Information);
 		}
 	}
 }

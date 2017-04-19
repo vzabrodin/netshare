@@ -1,4 +1,4 @@
-﻿namespace NetShare.Wlan.WinAPI
+﻿namespace NetShare.WLAN.WinAPI
 {
 	public enum WLAN_CONNECTION_MODE
 	{

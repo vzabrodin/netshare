@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace NetShare.Wlan.WinAPI
+namespace NetShare.WLAN.WinAPI
 {
-	public static class WlanApi
+	public static class wlanapi
 	{
 		/// <summary>
 		/// Client version of Windows XP with SP3 and Wireless LAN API for Windows XP with SP2

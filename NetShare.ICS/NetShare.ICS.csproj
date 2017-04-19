@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ics.cs" />
-    <Compile Include="IcsManager.cs" />
-    <Compile Include="IcsStatus.cs" />
+    <Compile Include="ICSConnection.cs" />
+    <Compile Include="ICSManager.cs" />
+    <Compile Include="ICSStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

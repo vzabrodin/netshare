@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace NetShare.Wlan.WinAPI
+namespace NetShare.WLAN.WinAPI
 {
 	[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
 	public struct DOT11_BSSID_LIST

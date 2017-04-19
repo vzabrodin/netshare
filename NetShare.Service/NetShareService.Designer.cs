@@ -31,8 +31,9 @@
 			// 
 			// NetShareService
 			// 
+			this.AutoLog = false;
+			this.CanHandlePowerEvent = true;
 			this.CanHandleSessionChangeEvent = true;
-			this.CanStop = false;
 			this.ServiceName = "NetShareService";
 
 		}

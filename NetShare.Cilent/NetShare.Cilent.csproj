@@ -74,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -94,12 +95,17 @@
       <Project>{e5966c38-d683-46f6-b21a-47683bf64b6a}</Project>
       <Name>NetShare.Host</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NetShare.Service\NetShare.Service.csproj">
+      <Project>{7c452e1b-410c-485f-82b9-c99017c9ee98}</Project>
+      <Name>NetShare.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabSettings = new System.Windows.Forms.TabPage();
@@ -48,11 +49,21 @@
 			this.hostName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.macAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabAbout = new System.Windows.Forms.TabPage();
+			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.labelProductName = new System.Windows.Forms.Label();
+			this.labelVersion = new System.Windows.Forms.Label();
+			this.labelCopyright = new System.Windows.Forms.Label();
+			this.labelCompanyName = new System.Windows.Forms.Label();
+			this.logoPictureBox = new System.Windows.Forms.PictureBox();
 			this.tabControl1.SuspendLayout();
 			this.tabSettings.SuspendLayout();
 			this.panSettingsInput.SuspendLayout();
 			this.tabConnectedPeers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.tabAbout.SuspendLayout();
+			this.tableLayoutPanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tabControl1
@@ -62,6 +73,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.tabSettings);
 			this.tabControl1.Controls.Add(this.tabConnectedPeers);
+			this.tabControl1.Controls.Add(this.tabAbout);
 			this.tabControl1.Location = new System.Drawing.Point(12, 12);
 			this.tabControl1.Multiline = true;
 			this.tabControl1.Name = "tabControl1";
@@ -97,7 +109,7 @@
 			this.panSettingsInput.Controls.Add(this.cmbShareAdapter);
 			this.panSettingsInput.Location = new System.Drawing.Point(6, 6);
 			this.panSettingsInput.Name = "panSettingsInput";
-			this.panSettingsInput.Size = new System.Drawing.Size(340, 103);
+			this.panSettingsInput.Size = new System.Drawing.Size(340, 107);
 			this.panSettingsInput.TabIndex = 9;
 			// 
 			// txtSSID
@@ -180,6 +192,7 @@
 			// 
 			// lblIsStarted
 			// 
+			this.lblIsStarted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblIsStarted.Location = new System.Drawing.Point(265, 187);
 			this.lblIsStarted.Name = "lblIsStarted";
 			this.lblIsStarted.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -190,6 +203,7 @@
 			// 
 			// btnStop
 			// 
+			this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnStop.Location = new System.Drawing.Point(9, 182);
 			this.btnStop.Name = "btnStop";
 			this.btnStop.Size = new System.Drawing.Size(75, 23);
@@ -223,23 +237,33 @@
 			// 
 			this.dataGridView1.AllowUserToAddRows = false;
 			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.AllowUserToResizeColumns = false;
 			this.dataGridView1.AllowUserToResizeRows = false;
 			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-			this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+			this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+			this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+			dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.hostName,
             this.ipAddress,
             this.macAddress});
+			this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 6);
 			this.dataGridView1.MultiSelect = false;
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
+			this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
 			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -248,6 +272,7 @@
 			this.dataGridView1.ShowEditingIcon = false;
 			this.dataGridView1.ShowRowErrors = false;
 			this.dataGridView1.Size = new System.Drawing.Size(340, 199);
+			this.dataGridView1.StandardTab = true;
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// hostName
@@ -255,23 +280,123 @@
 			this.hostName.HeaderText = "Host Name";
 			this.hostName.Name = "hostName";
 			this.hostName.ReadOnly = true;
+			this.hostName.Width = 112;
 			// 
 			// ipAddress
 			// 
 			this.ipAddress.HeaderText = "IP";
 			this.ipAddress.Name = "ipAddress";
 			this.ipAddress.ReadOnly = true;
+			this.ipAddress.Width = 112;
 			// 
 			// macAddress
 			// 
 			this.macAddress.HeaderText = "MAC";
 			this.macAddress.Name = "macAddress";
 			this.macAddress.ReadOnly = true;
+			this.macAddress.Width = 113;
+			// 
+			// tabAbout
+			// 
+			this.tabAbout.Controls.Add(this.tableLayoutPanel);
+			this.tabAbout.Location = new System.Drawing.Point(4, 22);
+			this.tabAbout.Name = "tabAbout";
+			this.tabAbout.Padding = new System.Windows.Forms.Padding(3);
+			this.tabAbout.Size = new System.Drawing.Size(352, 211);
+			this.tabAbout.TabIndex = 2;
+			this.tabAbout.Text = "About";
+			this.tabAbout.UseVisualStyleBackColor = true;
+			// 
+			// tableLayoutPanel
+			// 
+			this.tableLayoutPanel.ColumnCount = 2;
+			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+			this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
+			this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
+			this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
+			this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
+			this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
+			this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
+			this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tableLayoutPanel.Location = new System.Drawing.Point(3, 3);
+			this.tableLayoutPanel.Name = "tableLayoutPanel";
+			this.tableLayoutPanel.RowCount = 6;
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.56311F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.56311F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.56311F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.56311F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.18447F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.56311F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel.Size = new System.Drawing.Size(346, 205);
+			this.tableLayoutPanel.TabIndex = 1;
+			// 
+			// labelProductName
+			// 
+			this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelProductName.Location = new System.Drawing.Point(120, 0);
+			this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+			this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
+			this.labelProductName.Name = "labelProductName";
+			this.labelProductName.Size = new System.Drawing.Size(223, 17);
+			this.labelProductName.TabIndex = 19;
+			this.labelProductName.Text = "Название продукта";
+			this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// labelVersion
+			// 
+			this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelVersion.Location = new System.Drawing.Point(120, 29);
+			this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+			this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
+			this.labelVersion.Name = "labelVersion";
+			this.labelVersion.Size = new System.Drawing.Size(223, 17);
+			this.labelVersion.TabIndex = 0;
+			this.labelVersion.Text = "Версия";
+			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// labelCopyright
+			// 
+			this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelCopyright.Location = new System.Drawing.Point(120, 58);
+			this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+			this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
+			this.labelCopyright.Name = "labelCopyright";
+			this.labelCopyright.Size = new System.Drawing.Size(223, 17);
+			this.labelCopyright.TabIndex = 21;
+			this.labelCopyright.Text = "Авторские права";
+			this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// labelCompanyName
+			// 
+			this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelCompanyName.Location = new System.Drawing.Point(120, 87);
+			this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+			this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
+			this.labelCompanyName.Name = "labelCompanyName";
+			this.labelCompanyName.Size = new System.Drawing.Size(223, 17);
+			this.labelCompanyName.TabIndex = 22;
+			this.labelCompanyName.Text = "Название организации";
+			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// logoPictureBox
+			// 
+			this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.logoPictureBox.Image = global::NetShare.Cilent.Properties.Resources.icon;
+			this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+			this.logoPictureBox.Name = "logoPictureBox";
+			this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 4);
+			this.logoPictureBox.Size = new System.Drawing.Size(108, 110);
+			this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.logoPictureBox.TabIndex = 12;
+			this.logoPictureBox.TabStop = false;
 			// 
 			// FormMain
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(384, 261);
 			this.Controls.Add(this.tabControl1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -287,6 +412,9 @@
 			this.panSettingsInput.PerformLayout();
 			this.tabConnectedPeers.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.tabAbout.ResumeLayout(false);
+			this.tableLayoutPanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -312,6 +440,13 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn hostName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ipAddress;
 		private System.Windows.Forms.DataGridViewTextBoxColumn macAddress;
+		private System.Windows.Forms.TabPage tabAbout;
+		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+		private System.Windows.Forms.Label labelProductName;
+		private System.Windows.Forms.Label labelVersion;
+		private System.Windows.Forms.Label labelCopyright;
+		private System.Windows.Forms.Label labelCompanyName;
+		private System.Windows.Forms.PictureBox logoPictureBox;
 	}
 }
 

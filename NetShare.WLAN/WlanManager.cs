@@ -1,36 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using NetShare.Wlan.WinAPI;
+using NetShare.WLAN.WinAPI;
 
-namespace NetShare.Wlan
+namespace NetShare.WLAN
 {
 	public class WlanManager : IDisposable
 	{
 		private IntPtr _WlanHandle;
 		private uint _ServerVersion;
-		private WlanApi.WLAN_NOTIFICATION_CALLBACK _notificationCallback;
+		private wlanapi.WLAN_NOTIFICATION_CALLBACK _notificationCallback;
 
+		/// <summary>
+		/// Creates an instance of WlanManager class
+		/// </summary>
 		public WlanManager()
 		{
-			_notificationCallback = new WlanApi.WLAN_NOTIFICATION_CALLBACK(OnNotification);
+			_notificationCallback = new wlanapi.WLAN_NOTIFICATION_CALLBACK(OnNotification);
 			Init();
 		}
 
+		/// <summary>
+		/// Initializes access point
+		/// </summary>
 		private void Init()
 		{
 			try
 			{
 				WlanUtils.ThrowOnWin32Error(
-					WlanApi.WlanOpenHandle(
-						WlanApi.WLAN_CLIENT_VERSION_VISTA,
+					wlanapi.WlanOpenHandle(
+						wlanapi.WLAN_CLIENT_VERSION_VISTA,
 						IntPtr.Zero,
 						out _ServerVersion,
 						ref _WlanHandle));
 
 				WLAN_NOTIFICATION_SOURCE notificationSource;
 				WlanUtils.ThrowOnWin32Error(
-					WlanApi.WlanRegisterNotification(
+					wlanapi.WlanRegisterNotification(
 						_WlanHandle,
 						WLAN_NOTIFICATION_SOURCE.ALL,
 						true,
@@ -47,25 +53,45 @@ namespace NetShare.Wlan
 			}
 			catch
 			{
-				WlanApi.WlanCloseHandle(_WlanHandle, IntPtr.Zero);
+				wlanapi.WlanCloseHandle(_WlanHandle, IntPtr.Zero);
 				throw;
 			}
 		}
 
 		#region "Events"
-
+		/// <summary>
+		/// Raises when access point is started
+		/// </summary>
 		public event EventHandler HostedNetworkStarted;
+
+		/// <summary>
+		/// Raises when access point is stopped
+		/// </summary>
 		public event EventHandler HostedNetworkStopped;
+
+		/// <summary>
+		/// Raises when access point is available
+		/// </summary>
 		public event EventHandler HostedNetworkAvailable;
 
+		/// <summary>
+		/// Raises when new user joined to access point
+		/// </summary>
 		public event EventHandler StationJoin;
+
+		/// <summary>
+		/// Raises when new user leaved access point
+		/// </summary>
 		public event EventHandler StationLeave;
+
+		/// <summary>
+		/// Raises when user's state changes
+		/// </summary>
 		public event EventHandler StationStateChange;
 
 		#endregion
 
 		#region "OnNotification"
-
 		protected void onHostedNetworkStarted()
 		{
 			if (HostedNetworkStarted != null)
@@ -203,11 +229,15 @@ namespace NetShare.Wlan
 
 		#region "Public Methods"
 
+		/// <summary>
+		/// Force starts hosted network
+		/// </summary>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON ForceStart()
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkForceStart(
+				wlanapi.WlanHostedNetworkForceStart(
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
@@ -215,11 +245,15 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Force stops hosted network
+		/// </summary>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON ForceStop()
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkForceStop(
+				wlanapi.WlanHostedNetworkForceStop(
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
@@ -227,11 +261,15 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Starts hosted network
+		/// </summary>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON StartUsing()
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkStartUsing(
+				wlanapi.WlanHostedNetworkStartUsing(
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
@@ -239,11 +277,15 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Stops hosted network
+		/// </summary>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON StopUsing()
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkStopUsing(
+				wlanapi.WlanHostedNetworkStopUsing(
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
@@ -251,23 +293,35 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Initializes hosted network settings
+		/// </summary>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON InitSettings()
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkInitSettings(
+				wlanapi.WlanHostedNetworkInitSettings(
 					_WlanHandle,
 					out failReason,
 					IntPtr.Zero));
 			return failReason;
 		}
 
+
+		/// <summary>
+		/// Gets AP's password
+		/// </summary>
+		/// <param name="passKey">password of hosted network</param>
+		/// <param name="isPassPhrase">indicates if the key data is in passphrase format</param>
+		/// <param name="isPersistent">indicates if the key data is to be stored and reused later or is for one-time use only</param>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON QuerySecondaryKey(out string passKey, out bool isPassPhrase, out bool isPersistent)
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 			uint keyLen;
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkQuerySecondaryKey(
+				wlanapi.WlanHostedNetworkQuerySecondaryKey(
 					_WlanHandle,
 					out keyLen,
 					out passKey,
@@ -278,12 +332,17 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Sets a password of hosted network
+		/// </summary>
+		/// <param name="passKey">password</param>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON SetSecondaryKey(string passKey)
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkSetSecondaryKey(
+				wlanapi.WlanHostedNetworkSetSecondaryKey(
 					_WlanHandle,
 					(uint)(passKey.Length + 1),
 					passKey,
@@ -294,12 +353,16 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Gets a status of hosted network
+		/// </summary>
+		/// <returns>hosted network status</returns>
 		public WLAN_HOSTED_NETWORK_STATUS QueryStatus()
 		{
 			IntPtr ptr = new IntPtr();
 
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkQueryStatus(
+				wlanapi.WlanHostedNetworkQueryStatus(
 					_WlanHandle,
 					out ptr,
 					IntPtr.Zero));
@@ -309,19 +372,25 @@ namespace NetShare.Wlan
 			return status;
 		}
 
+		/// <summary>
+		/// Sets hosted network parameters
+		/// </summary>
+		/// <param name="hostedNetworkSSID">SSID</param>
+		/// <param name="maxNumberOfPeers">max number of peers</param>
+		/// <returns>fail reason</returns>
 		public WLAN_HOSTED_NETWORK_REASON SetConnectionSettings(string hostedNetworkSSID, int maxNumberOfPeers)
 		{
 			WLAN_HOSTED_NETWORK_REASON failReason;
 
 			WLAN_HOSTED_NETWORK_CONNECTION_SETTINGS settings = new WLAN_HOSTED_NETWORK_CONNECTION_SETTINGS();
-			settings.hostedNetworkSSID = WlanUtils.ConvertStringToDOT11_SSID(hostedNetworkSSID);
-			settings.dwMaxNumberOfPeers = (uint)maxNumberOfPeers;
+			settings.hostedNetworkSSID = hostedNetworkSSID.ToDOT11_SSID();
+			settings.dwMaxNumberOfPeers = maxNumberOfPeers;
 
 			IntPtr settingsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(settings));
-			Marshal.StructureToPtr(settings, settingsPtr, false);
+			Marshal.StructureToPtr(settings, settingsPtr, true);
 
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkSetProperty(
+				wlanapi.WlanHostedNetworkSetProperty(
 					_WlanHandle,
 					WLAN_HOSTED_NETWORK_OPCODE.CONNECTION_SETTINGS,
 					(uint)Marshal.SizeOf(settings),
@@ -331,6 +400,12 @@ namespace NetShare.Wlan
 			return failReason;
 		}
 
+		/// <summary>
+		/// Gets hosted network parameters
+		/// </summary>
+		/// <param name="hostedNetworkSSID">SSID</param>
+		/// <param name="maxNumberOfPeers">max number of peers</param>
+		/// <returns>тип значения</returns>
 		public WLAN_OPCODE_VALUE_TYPE QueryConnectionSettings(out string hostedNetworkSSID, out int maxNumberOfPeers)
 		{
 			uint dataSize;
@@ -338,7 +413,7 @@ namespace NetShare.Wlan
 			WLAN_OPCODE_VALUE_TYPE opcode;
 
 			WlanUtils.ThrowOnWin32Error(
-				WlanApi.WlanHostedNetworkQueryProperty(
+				wlanapi.WlanHostedNetworkQueryProperty(
 					_WlanHandle,
 					WLAN_HOSTED_NETWORK_OPCODE.CONNECTION_SETTINGS,
 					out dataSize,
@@ -351,13 +426,16 @@ namespace NetShare.Wlan
 					dataPtr,
 					typeof(WLAN_HOSTED_NETWORK_CONNECTION_SETTINGS));
 
-			hostedNetworkSSID = WlanUtils.ToString(settings.hostedNetworkSSID);
+			hostedNetworkSSID = settings.hostedNetworkSSID.ucSSID;
 
 			maxNumberOfPeers = (int)settings.dwMaxNumberOfPeers;
 
 			return opcode;
 		}
 
+		/// <summary>
+		/// Starts hosted network
+		/// </summary>
 		public void StartHostedNetwork()
 		{
 			try
@@ -377,6 +455,9 @@ namespace NetShare.Wlan
 			}
 		}
 
+		/// <summary>
+		/// Stops hosted network
+		/// </summary>
 		public void StopHostedNetwork()
 		{
 			ForceStop();
@@ -386,6 +467,9 @@ namespace NetShare.Wlan
 
 		#region "Properties"
 
+		/// <summary>
+		/// GUID виртуального адаптера точки доступа
+		/// </summary>
 		public Guid HostedNetworkInterfaceGuid
 		{
 			get
@@ -395,6 +479,9 @@ namespace NetShare.Wlan
 			}
 		}
 
+		/// <summary>
+		/// Состояние точки доступа
+		/// </summary>
 		public WLAN_HOSTED_NETWORK_STATE HostedNetworkState
 		{
 			get
@@ -403,6 +490,9 @@ namespace NetShare.Wlan
 			}
 		}
 
+		/// <summary>
+		/// Подключенные пользователи
+		/// </summary>
 		public Dictionary<string, WlanStation> Stations
 		{
 			get
@@ -412,7 +502,7 @@ namespace NetShare.Wlan
 				IntPtr ptr = new IntPtr();
 
 				WlanUtils.ThrowOnWin32Error(
-					WlanApi.WlanHostedNetworkQueryStatus(
+					wlanapi.WlanHostedNetworkQueryStatus(
 						_WlanHandle,
 						out ptr,
 						IntPtr.Zero));
@@ -428,7 +518,7 @@ namespace NetShare.Wlan
 						var peer = (WLAN_HOSTED_NETWORK_PEER_STATE)Marshal.PtrToStructure(
 							new IntPtr(ptr.ToInt64() + offset.ToInt64()),
 							typeof(WLAN_HOSTED_NETWORK_PEER_STATE));
-						stations.Add(WlanUtils.ToString(peer.PeerMacAddress), new WlanStation(peer));
+						stations.Add(peer.PeerMacAddress.ConvertToString(), new WlanStation(peer));
 
 						offset += Marshal.SizeOf(peer);
 					}
@@ -437,6 +527,9 @@ namespace NetShare.Wlan
 			}
 		}
 
+		/// <summary>
+		/// Показывает, запущена ли точка доступа
+		/// </summary>
 		public bool IsHostedNetworkStarted
 		{
 			get
@@ -455,7 +548,7 @@ namespace NetShare.Wlan
 
 			if (_WlanHandle != IntPtr.Zero)
 			{
-				WlanApi.WlanCloseHandle(_WlanHandle, IntPtr.Zero);
+				wlanapi.WlanCloseHandle(_WlanHandle, IntPtr.Zero);
 			}
 		}
 

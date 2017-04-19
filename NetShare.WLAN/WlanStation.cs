@@ -1,6 +1,6 @@
-﻿using NetShare.Wlan.WinAPI;
+﻿using NetShare.WLAN.WinAPI;
 
-namespace NetShare.Wlan
+namespace NetShare.WLAN
 {
 	public class WlanStation
 	{
@@ -15,7 +15,7 @@ namespace NetShare.Wlan
 		{
 			get
 			{
-				return WlanUtils.ToString(State.PeerMacAddress);
+				return State.PeerMacAddress.ConvertToString();
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace NetShare.Wlan.WinAPI
+namespace NetShare.WLAN.WinAPI
 {
 	public struct WLAN_PROFILE_INFO_LIST
 	{

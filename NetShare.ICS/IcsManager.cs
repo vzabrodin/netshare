@@ -5,11 +5,11 @@ using NETCONLib;
 
 namespace NetShare.ICS
 {
-	public class IcsManager
+	public class ICSManager
 	{
 		protected INetSharingManager _NSManager;
 
-		public IcsManager()
+		public ICSManager()
 		{
 			this.Init();
 		}
@@ -28,11 +28,11 @@ namespace NetShare.ICS
 
 			var connections = Connections;
 
-			Ics publicConn = (from c in connections
+			ICSConnection publicConn = (from c in connections
 										where c.IsMatch(publicGuid)
 										select c).First();
 
-			Ics privateConn = (from c in connections
+			ICSConnection privateConn = (from c in connections
 										 where c.IsMatch(privateGuid)
 										 select c).First();
 
@@ -56,15 +56,15 @@ namespace NetShare.ICS
 			}
 		}
 
-		public List<Ics> Connections
+		public List<ICSConnection> Connections
 		{
 			get
 			{
-				var list = new List<Ics>();
+				var list = new List<ICSConnection>();
 
 				foreach (INetConnection conn in _NSManager.EnumEveryConnection)
 				{
-					list.Add(new Ics(_NSManager, conn));
+					list.Add(new ICSConnection(_NSManager, conn));
 				}
 
 				return list;

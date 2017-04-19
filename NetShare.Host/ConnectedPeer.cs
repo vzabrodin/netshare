@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using NetShare.Wlan;
+using NetShare.WLAN;
 
 namespace NetShare.Host
 {

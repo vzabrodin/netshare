@@ -1,8 +1,4 @@
-- (?) Проверять в отдельном потоке, запущен ли сервис
-- Получать IP подключенных пиров
-- Определять имена компьютеров подключенных пиров
-- (?) Определять производителей подключенных пиров по MAC-адресу
-- SingleInstance
-
+TODO:
 BUGS:
-	Нельзя узнать пароль если включена раздача
+	(?) Doesn't retrieve a hostname of connected peer sometimes (IPInfo2)
+	Max peers parameter doesn't apply

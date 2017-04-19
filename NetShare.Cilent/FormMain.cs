@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.ServiceProcess;
 using NetShare.Host;
+using System.Reflection;
 
 namespace NetShare.Cilent
 {
@@ -14,6 +15,19 @@ namespace NetShare.Cilent
 		public FormMain()
 		{
 			InitializeComponent();
+			About();
+		}
+
+		private void UpdateControls()
+		{
+			var started = _netsh.IsStarted;
+
+			txtSSID.ReadOnly = started;
+			txtPassword.ReadOnly = started;
+			cmbShareAdapter.Enabled = !started;
+			lblIsStarted.Text = started ? "Started" : "Stopped";
+			btnStart.Visible = !started;
+			btnStop.Visible = started;
 		}
 
 		private void FormMain_Load(object sender, EventArgs e)
@@ -21,16 +35,16 @@ namespace NetShare.Cilent
 			_netsh = new NetShareHost();
 			try
 			{
-				_service = new ServiceController("NetShareService");
+				_service = new ServiceController(NetShare.Service.Properties.Resources.ServiceName);
 				if (_service.Status != ServiceControllerStatus.Running)
 				{
-					_service.Start();
+					_service.Start(new string[] { "/noautostart" });
 				}
 			}
 			catch (InvalidOperationException)
 			{
 				MessageBox.Show("Service NetShareService was not found on computer.\nPlease reinstall program", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				Close();
+				Application.Exit();
 			}
 
 			Configuration conf = new Configuration();
@@ -64,10 +78,7 @@ namespace NetShare.Cilent
 
 			chckIsAutostart.Checked = conf.IsAutostart;
 
-			panSettingsInput.Enabled = !_netsh.IsStarted;
-			lblIsStarted.Text = _netsh.IsStarted ? "Started" : "Stopped";
-			btnStart.Visible = !_netsh.IsStarted;
-			btnStop.Visible = _netsh.IsStarted;
+			UpdateControls();
 			if (_netsh.IsStarted)
 			{
 				UpdateConnectionsListChangedSafe();
@@ -101,42 +112,49 @@ namespace NetShare.Cilent
 			}
 			else
 			{
-				if (isStart)
+				UpdateControls();
+				if (!isStart)
 				{
-					lblIsStarted.Text = "Started";
-					btnStop.Visible = true;
-					btnStart.Visible = false;
-					panSettingsInput.Enabled = false;
-				}
-				else
-				{
-					lblIsStarted.Text = "Stopped";
-					btnStart.Visible = true;
-					btnStop.Visible = false;
-					panSettingsInput.Enabled = true;
 					dataGridView1.Rows.Clear();
+				}
+
+				_service.Refresh();
+				if (_service.Status != ServiceControllerStatus.Running)
+				{
+					if (MessageBox.Show("NetShare Service was unexpectedly stopped. Do you want to restart service?", "NetShare", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+					Application.Restart();
 				}
 			}
 		}
 
-		private delegate void delegateVoid();
+		private delegate void DelegateVoid();
 		private void UpdateConnectionsListChangedSafe()
 		{
 			if (dataGridView1.InvokeRequired)
 			{
 				try
 				{
-					Invoke(new delegateVoid(UpdateConnectionsListChangedSafe));
+					Invoke(new DelegateVoid(UpdateConnectionsListChangedSafe));
 				}
-				catch { }
+				catch
+				{
+				}
 			}
 			else
 			{
 				dataGridView1.Rows.Clear();
 				foreach (var item in _netsh.GetConnectedPeers())
 				{
-					var ipInfo = IPInfo.GetIPInfo(item.MacAddress.Replace(':', '-').ToLowerInvariant());
-					dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
+					//var ipInfo = IPInfo.GetIPInfo(item.MacAddress.Replace(':', '-').ToLowerInvariant());
+					var ipInfo = IPInfo2.GetIPInfo(item.MacAddress.ToLowerInvariant());
+					if (ipInfo != null)
+					{
+						dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
+					}
+					else
+					{
+						dataGridView1.Rows.Add("Unknown", "Unknown", item.MacAddress);
+					}
 				}
 			}
 		}
@@ -153,6 +171,13 @@ namespace NetShare.Cilent
 
 		private void btnStart_Click(object sender, EventArgs e)
 		{
+			_service.Refresh();
+			if (_service.Status != ServiceControllerStatus.Running)
+			{
+				if (MessageBox.Show("NetShare Service is stopped. Do you want to restart service?", "NetShare", MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+				Application.Restart();
+			}
+			if (!ConfigValidate()) return;
 			ConfigSave();
 			_service.ExecuteCommand(200);
 			lblIsStarted.Text = "Waiting...";
@@ -164,34 +189,123 @@ namespace NetShare.Cilent
 			lblIsStarted.Text = "Waiting...";
 		}
 
-		private void btnSave_Click(object sender, EventArgs e)
+		private bool ConfigValidate()
 		{
-			ConfigSave();
+			if (string.IsNullOrEmpty(txtSSID.Text))
+			{
+				MessageBox.Show("SSID can not be empty");
+				return false;
+			}
+			if (string.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text.Length < 8 || txtPassword.Text.Length > 63)
+			{
+				MessageBox.Show("Password must be between 8 or 63 characters");
+				return false;
+			}
+			return true;
 		}
 
 		private void ConfigSave()
 		{
-			if (txtSSID.Text == "")
-			{
-				MessageBox.Show("SSID can not be empty");
-				return;
-			}
-
-			if (txtPassword.Text.Length < 8)
-			{
-				MessageBox.Show("Password must be 8 or greater characters");
-				return;
-			}
-
 			_netsh.SetConnectionSettings(txtSSID.Text, 10);
 			_netsh.SetPassword(txtPassword.Text);
-
 			new Configuration(chckIsAutostart.Checked, (cmbShareAdapter.SelectedItem as SharableConnection).Guid).Write();
 		}
 
 		private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			ConfigSave();
+			if (e.CloseReason != CloseReason.ApplicationExitCall)
+			{
+				ConfigSave();
+			}
 		}
+
+		private void About()
+		{
+			Text = string.Format("О программе {0}", AssemblyTitle);
+			labelProductName.Text = AssemblyProduct;
+			labelVersion.Text = string.Format("Версия {0}", AssemblyVersion);
+			labelCopyright.Text = AssemblyCopyright;
+			labelCompanyName.Text = AssemblyCompany;
+		}
+
+		#region Методы доступа к атрибутам сборки
+
+		public string AssemblyTitle
+		{
+			get
+			{
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+				if (attributes.Length > 0)
+				{
+					AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+					if (titleAttribute.Title != "")
+					{
+						return titleAttribute.Title;
+					}
+				}
+				return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+			}
+		}
+
+		public string AssemblyVersion
+		{
+			get
+			{
+				return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			}
+		}
+
+		public string AssemblyDescription
+		{
+			get
+			{
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+				if (attributes.Length == 0)
+				{
+					return "";
+				}
+				return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+			}
+		}
+
+		public string AssemblyProduct
+		{
+			get
+			{
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+				if (attributes.Length == 0)
+				{
+					return "";
+				}
+				return ((AssemblyProductAttribute)attributes[0]).Product;
+			}
+		}
+
+		public string AssemblyCopyright
+		{
+			get
+			{
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+				if (attributes.Length == 0)
+				{
+					return "";
+				}
+				return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+			}
+		}
+
+		public string AssemblyCompany
+		{
+			get
+			{
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+				if (attributes.Length == 0)
+				{
+					return "";
+				}
+				return ((AssemblyCompanyAttribute)attributes[0]).Company;
+			}
+		}
+		#endregion
 	}
 }

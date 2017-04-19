@@ -7,8 +7,8 @@
     <ProjectGuid>{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NetShare.Wlan</RootNamespace>
-    <AssemblyName>NetShare.Wlan</AssemblyName>
+    <RootNamespace>NetShare.WLAN</RootNamespace>
+    <AssemblyName>NetShare.WLAN</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,7 +52,7 @@
     <Compile Include="WinAPI\DOT11_RADIO_STATE.cs" />
     <Compile Include="WinAPI\DOT11_SSID.cs" />
     <Compile Include="WinAPI\NDIS_OBJECT_HEADER.cs" />
-    <Compile Include="WinAPI\WlanApi.cs" />
+    <Compile Include="WinAPI\wlanapi.cs" />
     <Compile Include="WinAPI\WLAN_ASSOCIATION_ATTRIBUTES.cs" />
     <Compile Include="WinAPI\WLAN_AVAILABLE_NETWORK.cs" />
     <Compile Include="WinAPI\WLAN_AVAILABLE_NETWORK_LIST.cs" />

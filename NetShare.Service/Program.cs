@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NetShare.Service.Properties;
+using System.Configuration.Install;
 using System.Linq;
+using System.Reflection;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetShare.Service
 {
@@ -12,14 +11,46 @@ namespace NetShare.Service
 		/// <summary>
 		/// Главная точка входа для приложения.
 		/// </summary>
-		static void Main()
+		static void Main(string[] args)
 		{
-			ServiceBase[] ServicesToRun;
-			ServicesToRun = new ServiceBase[]
+			if (System.Environment.UserInteractive)
 			{
-				new NetShareService()
-			};
-			ServiceBase.Run(ServicesToRun);
+				if (args.Length > 0)
+				{
+					switch (args[0])
+					{
+						case "/install":
+							InstallService();
+							break;
+						case "/uninstall":
+							UninstallService();
+							break;
+					}
+				}
+			}
+			else
+			{
+				ServiceBase[] ServicesToRun;
+				ServicesToRun = new ServiceBase[]
+				{
+					new NetShareService()
+				};
+				ServiceBase.Run(ServicesToRun);
+			}
+		}
+
+		private static void InstallService()
+		{
+			UninstallService();
+			ManagedInstallerClass.InstallHelper(new string[] { Assembly.GetExecutingAssembly().Location });
+		}
+
+		private static void UninstallService()
+		{
+			if (ServiceController.GetServices().FirstOrDefault(s => s.ServiceName == Resources.ServiceName) != null)
+			{
+				ManagedInstallerClass.InstallHelper(new string[] { "/u", Assembly.GetExecutingAssembly().Location });
+			}
 		}
 	}
 }

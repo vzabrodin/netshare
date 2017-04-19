@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace NetShare.Wlan.WinAPI
+namespace NetShare.WLAN.WinAPI
 {
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	public struct DOT11_MAC_ADDRESS
