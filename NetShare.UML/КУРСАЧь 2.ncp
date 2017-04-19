@@ -1,0 +1,1752 @@
+<Project>
+  <Name>КУРСАЧь 2</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Cilent</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>FormMain</Name>
+        <Access>Public</Access>
+        <Location left="12" top="130" />
+        <Size width="428" height="961" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private NetShareHost _netsh</Member>
+        <Member type="Field">private ServiceController _service</Member>
+        <Member type="Field">private IContainer components</Member>
+        <Member type="Field">private TabControl tabControl1</Member>
+        <Member type="Field">private TabPage tabSettings</Member>
+        <Member type="Field">private TabPage tabConnectedPeers</Member>
+        <Member type="Field">private CheckBox chckPasswordHide</Member>
+        <Member type="Field">private Label lblPassword</Member>
+        <Member type="Field">private TextBox txtPassword</Member>
+        <Member type="Field">private TextBox txtSSID</Member>
+        <Member type="Field">private Label lblSSID</Member>
+        <Member type="Field">private ComboBox cmbShareAdapter</Member>
+        <Member type="Field">private Label lblSharedConnection</Member>
+        <Member type="Field">private Button btnStop</Member>
+        <Member type="Field">private Button btnStart</Member>
+        <Member type="Field">private Label lblIsStarted</Member>
+        <Member type="Field">private CheckBox chckIsAutostart</Member>
+        <Member type="Field">private Panel panSettingsInput</Member>
+        <Member type="Field">private DataGridView dataGridView1</Member>
+        <Member type="Field">private DataGridViewTextBoxColumn hostName</Member>
+        <Member type="Field">private DataGridViewTextBoxColumn ipAddress</Member>
+        <Member type="Field">private DataGridViewTextBoxColumn macAddress</Member>
+        <Member type="Field">private TabPage tabAbout</Member>
+        <Member type="Field">private TableLayoutPanel tableLayoutPanel</Member>
+        <Member type="Field">private Label labelProductName</Member>
+        <Member type="Field">private Label labelVersion</Member>
+        <Member type="Field">private Label labelCopyright</Member>
+        <Member type="Field">private Label labelCompanyName</Member>
+        <Member type="Field">private PictureBox logoPictureBox</Member>
+        <Member type="Property">public String AssemblyTitle { get; }</Member>
+        <Member type="Property">public String AssemblyVersion { get; }</Member>
+        <Member type="Property">public String AssemblyDescription { get; }</Member>
+        <Member type="Property">public String AssemblyProduct { get; }</Member>
+        <Member type="Property">public String AssemblyCopyright { get; }</Member>
+        <Member type="Property">public String AssemblyCompany { get; }</Member>
+        <Member type="Constructor">public FormMain()</Member>
+        <Member type="Method">private Void UpdateControls()</Member>
+        <Member type="Method">private Void FormMain_Load(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void _netsh_HostedNetworkStarted(NetShareHost hostedNetworkManager)</Member>
+        <Member type="Method">private Void _netsh_HostedNetworkStopped(NetShareHost hostedNetworkManager)</Member>
+        <Member type="Method">private Void StartStopThreadSafe(Boolean isStart)</Member>
+        <Member type="Method">private Void UpdateConnectionsListChangedSafe()</Member>
+        <Member type="Method">private Void _netsh_OnConnectionsListChanged(NetShareHost hostedNetworkManager)</Member>
+        <Member type="Method">private Void chckPasswordHide_CheckedChanged(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void btnStart_Click(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void btnStop_Click(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Boolean ConfigValidate()</Member>
+        <Member type="Method">private Void ConfigSave()</Member>
+        <Member type="Method">private Void FormMain_FormClosed(Object sender, FormClosedEventArgs e)</Member>
+        <Member type="Method">private Void About()</Member>
+        <Member type="Method">protected virtual Void Dispose(Boolean disposing)</Member>
+        <Member type="Method">private Void InitializeComponent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Program</Name>
+        <Access>Internal</Access>
+        <Location left="371" top="35" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Member type="Method">private static Void Main()</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>StartStopCallback</Name>
+        <Access>Public</Access>
+        <Location left="191" top="35" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>Boolean isStart</Param>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>DelegateVoid</Name>
+        <Access>Public</Access>
+        <Location left="12" top="35" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <ReturnType>Void</ReturnType>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Nesting" first="0" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Nesting" first="0" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Host</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Configuration</Name>
+        <Access>Public</Access>
+        <Location left="690" top="250" />
+        <Size width="324" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public Boolean IsAutostart { get; set; }</Member>
+        <Member type="Property">public Guid SharedConnection { get; set; }</Member>
+        <Member type="Constructor">public Configuration(Boolean isAutostart, Guid sharedConnection)</Member>
+        <Member type="Constructor">public Configuration()</Member>
+        <Member type="Method">public Void Write()</Member>
+        <Member type="Method">public Void Read()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConnectedPeer</Name>
+        <Access>Public</Access>
+        <Location left="466" top="296" />
+        <Size width="203" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public String MacAddress { get; set; }</Member>
+        <Member type="Constructor">public ConnectedPeer()</Member>
+        <Member type="Constructor">public ConnectedPeer(WlanStation peer)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConnectionSettings</Name>
+        <Access>Public</Access>
+        <Location left="466" top="152" />
+        <Size width="203" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public String SSID { get; set; }</Member>
+        <Member type="Property">public Int32 MaxPeerCount { get; set; }</Member>
+        <Member type="Constructor">public ConnectionSettings()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>IPInfo2</Name>
+        <Access>Public</Access>
+        <Location left="466" top="453" />
+        <Size width="435" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String _hostname</Member>
+        <Member type="Field">private const Int32 MAXLEN_PHYSADDR = 8</Member>
+        <Member type="Field">private const Int32 ERROR_INSUFFICIENT_BUFFER = 122</Member>
+        <Member type="Property">public String MacAddress { get; private set; }</Member>
+        <Member type="Property">public String IPAddress { get; private set; }</Member>
+        <Member type="Property">public String HostName { get; }</Member>
+        <Member type="Constructor">public IPInfo2(String mac, String ip)</Member>
+        <Member type="Method">private static Int32 GetIpNetTable(IntPtr pIpNetTable, ref Int32 pdwSize, Boolean bOrder)</Member>
+        <Member type="Method">private static Int32 FreeMibTable(IntPtr plpNetTable)</Member>
+        <Member type="Method">public static IPInfo2 GetIPInfo(String mac)</Member>
+        <Member type="Method">public static List&lt;IPInfo2&gt; GetIPInfo()</Member>
+        <Member type="Method">private static String MACToString(MIB_IPNETROW row)</Member>
+        <Member type="Method">private static String ByteToHexString(Byte value)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>NetShareHost</Name>
+        <Access>Public</Access>
+        <Location left="10" top="10" />
+        <Size width="403" height="502" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private WlanManager _wlanManager</Member>
+        <Member type="Field">private ICSManager _icsManager</Member>
+        <Member type="Field">private SharableConnection _currentSharedConnection</Member>
+        <Member type="Field">private String _lastErrorMessage</Member>
+        <Member type="Property">public Boolean IsStarted { get; }</Member>
+        <Member type="Event">public event GenericEvent ConnectionsListChanged</Member>
+        <Member type="Event">public event GenericEvent HostedNetworkStarted</Member>
+        <Member type="Event">public event GenericEvent HostedNetworkStopped</Member>
+        <Member type="Event">public event GenericEvent HostedNetworkAvailable</Member>
+        <Member type="Constructor">public NetShareHost()</Member>
+        <Member type="Method">private Void _wlanManager_HostedNetworkAvailable(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void _wlanManager_HostedNetworkStopped(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void _wlanManager_HostedNetworkStarted(Object sender, EventArgs e)</Member>
+        <Member type="Method">private Void _wlanManager_StationStateChange(Object sender, EventArgs e)</Member>
+        <Member type="Method">public String GetLastError()</Member>
+        <Member type="Method">public Boolean Start(Guid sharedConnectionGuid)</Member>
+        <Member type="Method">public Boolean Start(SharableConnection sharedConnection)</Member>
+        <Member type="Method">public Boolean Stop()</Member>
+        <Member type="Method">public Boolean SetConnectionSettings(String ssid, Int32 maxNumberOfPeers)</Member>
+        <Member type="Method">public ConnectionSettings GetConnectionSettings()</Member>
+        <Member type="Method">public IEnumerable&lt;SharableConnection&gt; GetSharableConnections()</Member>
+        <Member type="Method">public Boolean SetPassword(String password)</Member>
+        <Member type="Method">public String GetPassword()</Member>
+        <Member type="Method">public IEnumerable&lt;ConnectedPeer&gt; GetConnectedPeers()</Member>
+        <Member type="Method">public SharableConnection GetSharedConnection()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SharableConnection</Name>
+        <Access>Public</Access>
+        <Location left="690" top="12" />
+        <Size width="266" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public String Name { get; set; }</Member>
+        <Member type="Property">public String DeviceName { get; set; }</Member>
+        <Member type="Property">public Guid Guid { get; set; }</Member>
+        <Member type="Constructor">public SharableConnection()</Member>
+        <Member type="Constructor">public SharableConnection(ICSConnection connection)</Member>
+        <Member type="Method">public override String ToString()</Member>
+        <Member type="Method">public Int32 CompareTo(SharableConnection other)</Member>
+        <Member type="Method">public Boolean Equals(SharableConnection other)</Member>
+        <Member type="Method">public Boolean Equals(Guid other)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>MIB_IPNETROW</Name>
+        <Access>Public</Access>
+        <Location left="957" top="453" />
+        <Size width="162" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Int32 dwIndex</Member>
+        <Member type="Field">public Int32 dwPhysAddrLen</Member>
+        <Member type="Field">public Byte mac0</Member>
+        <Member type="Field">public Byte mac1</Member>
+        <Member type="Field">public Byte mac2</Member>
+        <Member type="Field">public Byte mac3</Member>
+        <Member type="Field">public Byte mac4</Member>
+        <Member type="Field">public Byte mac5</Member>
+        <Member type="Field">public Byte mac6</Member>
+        <Member type="Field">public Byte mac7</Member>
+        <Member type="Field">public Int32 dwAddr</Member>
+        <Member type="Field">public Int32 dwType</Member>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>GenericEvent</Name>
+        <Access>Public</Access>
+        <Location left="466" top="12" />
+        <Size width="203" height="78" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>NetShareHost hostedNetworkManager</Param>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Nesting" first="3" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Nesting" first="4" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="4" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_currentSharedConnection</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>ICS</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ICSConnection</Name>
+        <Access>Public</Access>
+        <Location left="232" top="12" />
+        <Size width="421" height="400" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private INetSharingManager _NSManager</Member>
+        <Member type="Field">private INetSharingConfiguration _config</Member>
+        <Member type="Field">private INetConnectionProps _props</Member>
+        <Member type="Property">public INetConnection INetConnection { get; private set; }</Member>
+        <Member type="Property">public INetSharingConfiguration Config { get; }</Member>
+        <Member type="Property">public INetConnectionProps Props { get; }</Member>
+        <Member type="Property">public Boolean IsSupported { get; }</Member>
+        <Member type="Property">public Boolean SharingEnabled { get; }</Member>
+        <Member type="Property">public Boolean IsPublic { get; }</Member>
+        <Member type="Property">public Boolean IsPrivate { get; }</Member>
+        <Member type="Property">public Boolean IsConnected { get; }</Member>
+        <Member type="Property">public String DeviceName { get; }</Member>
+        <Member type="Property">public String Name { get; }</Member>
+        <Member type="Property">public Guid Guid { get; }</Member>
+        <Member type="Constructor">public ICSConnection(INetSharingManager pIcsMgr, INetConnection pNetConnection)</Member>
+        <Member type="Method">public Void DisableSharing()</Member>
+        <Member type="Method">public Void EnableAsPublic()</Member>
+        <Member type="Method">public Void EnableAsPrivate()</Member>
+        <Member type="Method">public Boolean IsMatch(Guid guid)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ICSManager</Name>
+        <Access>Public</Access>
+        <Location left="671" top="12" />
+        <Size width="287" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected INetSharingManager _NSManager</Member>
+        <Member type="Property">public List&lt;ICSConnection&gt; Connections { get; }</Member>
+        <Member type="Property">public Boolean SharingInstalled { get; }</Member>
+        <Member type="Constructor">public ICSManager()</Member>
+        <Member type="Method">public Void Init()</Member>
+        <Member type="Method">public Void EnableIcs(Guid publicGuid, Guid privateGuid)</Member>
+        <Member type="Method">public Void DisableIcsOnAll()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ICSStatus</Name>
+        <Access>Public</Access>
+        <Location left="13" top="12" />
+        <Size width="194" height="282" />
+        <Collapsed>False</Collapsed>
+        <Value>DISCONNECTED = 0</Value>
+        <Value>CONNECTING = 1</Value>
+        <Value>CONNECTED = 2</Value>
+        <Value>DISCONNECTING = 3</Value>
+        <Value>HARDWARE_NOT_PRESENT = 4</Value>
+        <Value>HARDWARE_DISABLED = 5</Value>
+        <Value>HARDWARE_MALFUNCTION = 6</Value>
+        <Value>MEDIA_DISCONNECTED = 7</Value>
+        <Value>AUTHENTICATING = 8</Value>
+        <Value>AUTHENTICATION_SUCCEEDED = 9</Value>
+        <Value>AUTHENTICATION_FAILED = 10</Value>
+        <Value>INVALID_ADDRESS = 11</Value>
+        <Value>CREDENTIALS_REQUIRED = 12</Value>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Service</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>NetShareService</Name>
+        <Access>Public</Access>
+        <Location left="295" top="12" />
+        <Size width="336" height="298" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Boolean _stoppedSuspend</Member>
+        <Member type="Field">private NetShareHost _netshHost</Member>
+        <Member type="Field">private IContainer components</Member>
+        <Member type="Constructor">public NetShareService()</Member>
+        <Member type="Method">protected virtual Void OnStart(String[] args)</Member>
+        <Member type="Method">protected virtual Void OnStop()</Member>
+        <Member type="Method">protected virtual Boolean OnPowerEvent(PowerBroadcastStatus powerStatus)</Member>
+        <Member type="Method">protected virtual Void OnCustomCommand(Int32 command)</Member>
+        <Member type="Method">private Void StartAP()</Member>
+        <Member type="Method">private Void StopAP()</Member>
+        <Member type="Method">private Void WriteLog(String message)</Member>
+        <Member type="Method">protected virtual Void Dispose(Boolean disposing)</Member>
+        <Member type="Method">private Void InitializeComponent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Program</Name>
+        <Access>Internal</Access>
+        <Location left="654" top="12" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">private static Void Main(String[] args)</Member>
+        <Member type="Method">private static Void InstallService()</Member>
+        <Member type="Method">private static Void UninstallService()</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ServiceInstaller</Name>
+        <Access>Public</Access>
+        <Location left="12" top="12" />
+        <Size width="262" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IContainer components</Member>
+        <Member type="Field">private ServiceProcessInstaller serviceProcessInstaller1</Member>
+        <Member type="Field">private ServiceInstaller serviceInstaller1</Member>
+        <Member type="Constructor">public ServiceInstaller()</Member>
+        <Member type="Method">protected virtual Void Dispose(Boolean disposing)</Member>
+        <Member type="Method">private Void InitializeComponent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>WLAN</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>WlanUtils</Name>
+        <Access>Public</Access>
+        <Location left="12" top="300" />
+        <Size width="300" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static Void ThrowOnWin32Error(UInt32 retCode)</Member>
+        <Member type="Method">public static String ConvertToString(DOT11_MAC_ADDRESS mac)</Member>
+        <Member type="Method">public static String ToHexString(Byte value)</Member>
+        <Member type="Method">public static DOT11_SSID ToDOT11_SSID(String ssid)</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WlanManager</Name>
+        <Access>Public</Access>
+        <Location left="10" top="1294" />
+        <Size width="682" height="672" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IntPtr _WlanHandle</Member>
+        <Member type="Field">private UInt32 _ServerVersion</Member>
+        <Member type="Field">private WLAN_NOTIFICATION_CALLBACK _notificationCallback</Member>
+        <Member type="Property">public Guid HostedNetworkInterfaceGuid { get; }</Member>
+        <Member type="Property">public WLAN_HOSTED_NETWORK_STATE HostedNetworkState { get; }</Member>
+        <Member type="Property">public Dictionary&lt;String, WlanStation&gt; Stations { get; }</Member>
+        <Member type="Property">public Boolean IsHostedNetworkStarted { get; }</Member>
+        <Member type="Event">public event EventHandler HostedNetworkStarted</Member>
+        <Member type="Event">public event EventHandler HostedNetworkStopped</Member>
+        <Member type="Event">public event EventHandler HostedNetworkAvailable</Member>
+        <Member type="Event">public event EventHandler StationJoin</Member>
+        <Member type="Event">public event EventHandler StationLeave</Member>
+        <Member type="Event">public event EventHandler StationStateChange</Member>
+        <Member type="Constructor">public WlanManager()</Member>
+        <Member type="Method">private Void Init()</Member>
+        <Member type="Method">protected Void onHostedNetworkStarted()</Member>
+        <Member type="Method">protected Void onHostedNetworkStopped()</Member>
+        <Member type="Method">protected Void onHostedNetworkAvailable()</Member>
+        <Member type="Method">protected Void onStationJoin(WLAN_HOSTED_NETWORK_PEER_STATE stationState)</Member>
+        <Member type="Method">protected Void onStationLeave(WLAN_HOSTED_NETWORK_PEER_STATE stationState)</Member>
+        <Member type="Method">protected Void onStationStateChange(WLAN_HOSTED_NETWORK_PEER_STATE stationState)</Member>
+        <Member type="Method">protected Void OnNotification(ref WLAN_NOTIFICATION_DATA notificationData, IntPtr context)</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON ForceStart()</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON ForceStop()</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON StartUsing()</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON StopUsing()</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON InitSettings()</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON QuerySecondaryKey(out String passKey, out Boolean isPassPhrase, out Boolean isPersistent)</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON SetSecondaryKey(String passKey)</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_STATUS QueryStatus()</Member>
+        <Member type="Method">public WLAN_HOSTED_NETWORK_REASON SetConnectionSettings(String hostedNetworkSSID, Int32 maxNumberOfPeers)</Member>
+        <Member type="Method">public WLAN_OPCODE_VALUE_TYPE QueryConnectionSettings(out String hostedNetworkSSID, out Int32 maxNumberOfPeers)</Member>
+        <Member type="Method">public Void StartHostedNetwork()</Member>
+        <Member type="Method">public Void StopHostedNetwork()</Member>
+        <Member type="Method">public Void Dispose()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WlanStation</Name>
+        <Access>Public</Access>
+        <Location left="442" top="356" />
+        <Size width="334" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public WLAN_HOSTED_NETWORK_PEER_STATE State { get; set; }</Member>
+        <Member type="Property">public String MacAddress { get; }</Member>
+        <Member type="Constructor">public WlanStation(WLAN_HOSTED_NETWORK_PEER_STATE state)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>wlanapi</Name>
+        <Access>Public</Access>
+        <Location left="12" top="558" />
+        <Size width="1434" height="706" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public const UInt32 WLAN_CLIENT_VERSION_XP = 1</Member>
+        <Member type="Field">public const UInt32 WLAN_CLIENT_VERSION_VISTA = 2</Member>
+        <Member type="Field">public const UInt32 WLAN_AVAILABLE_NETWORK_INCLUDE_ALL_ADHOC_PROFILES = 1</Member>
+        <Member type="Field">public const UInt32 WLAN_AVAILABLE_NETWORK_INCLUDE_ALL_MANUAL_HIDDEN_PROFILES = 2</Member>
+        <Member type="Field">public const UInt32 WLAN_CONNECTION_HIDDEN_NETWORK = 1</Member>
+        <Member type="Field">public const UInt32 WLAN_CONNECTION_ADHOC_JOIN_ONLY = 2</Member>
+        <Member type="Field">public const UInt32 WLAN_CONNECTION_IGNORE_PRIVACY_BIT = 4</Member>
+        <Member type="Field">public const UInt32 WLAN_CONNECTION_EAPOL_PASSTHROUGH = 8</Member>
+        <Member type="Method">public static UInt32 WlanSetProfilePosition(IntPtr hClientHandle, ref Guid pInterfaceGuid, String strProfileName, UInt32 dwPosition, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanConnect(IntPtr hClientHandle, ref Guid pInterfaceGuid, ref WLAN_CONNECTION_PARAMETERS pConnectionParameters, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanCloseHandle(IntPtr hClientHandle, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanDeleteProfile(IntPtr hClientHandle, ref Guid pInterfaceGuid, String strProfileName, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanDisconnect(IntPtr hClientHandle, ref Guid pInterfaceGuid, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanEnumInterfaces(IntPtr hClientHandle, IntPtr pReserved, ref IntPtr ppInterfaceList)</Member>
+        <Member type="Method">public static Void WlanFreeMemory(IntPtr pMemory)</Member>
+        <Member type="Method">public static UInt32 WlanGetAvailableNetworkList(IntPtr hClientHandle, ref Guid pInterfaceGuid, UInt32 dwFlags, IntPtr pReserved, ref IntPtr ppAvailableNetworkList)</Member>
+        <Member type="Method">public static UInt32 WlanGetProfile(IntPtr hClientHandle, ref Guid pInterfaceGuid, String strProfileName, IntPtr pReserved, ref String pstrProfileXml, ref UInt32 pdwFlags, ref UInt32 pdwGrantedAccess)</Member>
+        <Member type="Method">public static UInt32 WlanGetProfileList(IntPtr hClientHandle, ref Guid pInterfaceGuid, IntPtr pReserved, ref IntPtr ppProfileList)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkForceStart(IntPtr hClientHandle, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkForceStop(IntPtr hClientHandle, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkInitSettings(IntPtr hClientHandle, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkQueryProperty(IntPtr hClientHandle, WLAN_HOSTED_NETWORK_OPCODE OpCode, out UInt32 pDataSize, out IntPtr ppvData, out WLAN_OPCODE_VALUE_TYPE pWlanOpcodeValueType, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkQuerySecondaryKey(IntPtr hClientHandle, out UInt32 pKeyLength, out String ppucKeyData, out Boolean pbIsPassPhrase, out Boolean pbPersistent, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkQueryStatus(IntPtr hClientHandle, out IntPtr ppWlanHostedNetworkStatus, IntPtr pvReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkRefreshSecuritySettings(IntPtr hClientHandle, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkSetProperty(IntPtr hClientHandle, WLAN_HOSTED_NETWORK_OPCODE OpCode, UInt32 dwDataSize, IntPtr pvData, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkSetSecondaryKey(IntPtr hClientHandle, UInt32 dwKeyLength, String pucKeyData, Boolean bIsPassPhrase, Boolean bPersistent, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkStartUsing(IntPtr hClientHandle, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanHostedNetworkStopUsing(IntPtr hClientHandle, out WLAN_HOSTED_NETWORK_REASON pFailReason, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanOpenHandle(UInt32 dwClientVersion, IntPtr pReserved, out UInt32 pdwNegotiatedVersion, ref IntPtr ClientHandle)</Member>
+        <Member type="Method">public static UInt32 WlanQueryInterface(IntPtr hClientHandle, ref Guid pInterfaceGuid, WLAN_INTF_OPCODE OpCode, IntPtr pReserved, out UInt32 pdwDataSize, ref IntPtr ppData, IntPtr pWlanOpcodeValueType)</Member>
+        <Member type="Method">public static UInt32 WlanReasonCodeToString(UInt32 dwReasonCode, UInt32 dwBufferSize, String pStringBuffer, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanRegisterNotification(IntPtr hClientHandle, WLAN_NOTIFICATION_SOURCE dwNotifSource, Boolean bIgnoreDuplicate, WLAN_NOTIFICATION_CALLBACK funcCallback, IntPtr pCallbackContext, IntPtr pReserved, out WLAN_NOTIFICATION_SOURCE pdwPrevNotifSource)</Member>
+        <Member type="Method">public static UInt32 WlanScan(IntPtr hClientHandle, ref Guid pInterfaceGuid, IntPtr pDot11Ssid, IntPtr pIeData, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanSetInterface(IntPtr hClientHandle, ref Guid pInterfaceGuid, WLAN_INTF_OPCODE OpCode, UInt32 dwDataSize, ref Object obj, IntPtr pReserved)</Member>
+        <Member type="Method">public static UInt32 WlanSetProfile(IntPtr hClientHandle, ref Guid pInterfaceGuid, UInt32 dwFlags, String strProfileXml, String strAllUserProfileSecurity, Boolean bOverwrite, IntPtr pReserved, ref UInt32 pdwReasonCode)</Member>
+        <Member type="Method">public static UInt32 WlanSetProfileList(IntPtr hClientHandle, ref Guid pInterfaceGuid, UInt32 dwItems, String[] strProfileNames, IntPtr pReserved)</Member>
+        <Modifier>Static</Modifier>
+      </Entity>
+      <Entity type="Structure">
+        <Name>DOT11_BSSID_LIST</Name>
+        <Access>Public</Access>
+        <Location left="3366" top="1105" />
+        <Size width="196" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public NDIS_OBJECT_HEADER Header</Member>
+        <Member type="Field">public UInt32 uNumOfEntries</Member>
+        <Member type="Field">public UInt32 uTotalNumOfEntries</Member>
+        <Member type="Field">public DOT11_MAC_ADDRESS[] BSSIDs</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>DOT11_MAC_ADDRESS</Name>
+        <Access>Public</Access>
+        <Location left="3347" top="734" />
+        <Size width="176" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Byte one</Member>
+        <Member type="Field">public Byte two</Member>
+        <Member type="Field">public Byte three</Member>
+        <Member type="Field">public Byte four</Member>
+        <Member type="Field">public Byte five</Member>
+        <Member type="Field">public Byte six</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>DOT11_SSID</Name>
+        <Access>Public</Access>
+        <Location left="1874" top="164" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public UInt32 uSSIDLength</Member>
+        <Member type="Field">public String ucSSID</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>NDIS_OBJECT_HEADER</Name>
+        <Access>Public</Access>
+        <Location left="3448" top="943" />
+        <Size width="196" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public String Type</Member>
+        <Member type="Field">public String Revision</Member>
+        <Member type="Field">public UInt16 Size</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_ASSOCIATION_ATTRIBUTES</Name>
+        <Access>Public</Access>
+        <Location left="2987" top="670" />
+        <Size width="258" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public DOT11_SSID dot11Ssid</Member>
+        <Member type="Field">public DOT11_BSS_TYPE dot11BssType</Member>
+        <Member type="Field">public DOT11_MAC_ADDRESS dot11Bssid</Member>
+        <Member type="Field">public DOT11_PHY_TYPE dot11PhyType</Member>
+        <Member type="Field">public UInt32 uDot11PhyIndex</Member>
+        <Member type="Field">public UInt32 wlanSignalQuality</Member>
+        <Member type="Field">public UInt32 ulRxRate</Member>
+        <Member type="Field">public UInt32 ulTxRate</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_AVAILABLE_NETWORK</Name>
+        <Access>Public</Access>
+        <Location left="2134" top="32" />
+        <Size width="324" height="332" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public String strProfileName</Member>
+        <Member type="Field">public DOT11_SSID dot11Ssid</Member>
+        <Member type="Field">public DOT11_BSS_TYPE dot11BssType</Member>
+        <Member type="Field">public UInt32 uNumberOfBssids</Member>
+        <Member type="Field">public Boolean bNetworkConnectable</Member>
+        <Member type="Field">public UInt32 wlanNotConnectableReason</Member>
+        <Member type="Field">public UInt32 uNumberOfPhyTypes</Member>
+        <Member type="Field">public DOT11_PHY_TYPE[] dot11PhyTypes</Member>
+        <Member type="Field">public Boolean bMorePhyTypes</Member>
+        <Member type="Field">public UInt32 wlanSignalQuality</Member>
+        <Member type="Field">public Boolean bSecurityEnabled</Member>
+        <Member type="Field">public DOT11_AUTH_ALGORITHM dot11DefaultAuthAlgorithm</Member>
+        <Member type="Field">public DOT11_CIPHER_ALGORITHM dot11DefaultCipherAlgorithm</Member>
+        <Member type="Field">public UInt32 dwFlags</Member>
+        <Member type="Field">public UInt32 dwReserved</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_AVAILABLE_NETWORK_LIST</Name>
+        <Access>Public</Access>
+        <Location left="1395" top="14" />
+        <Size width="364" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">internal UInt32 dwNumberOfItems</Member>
+        <Member type="Field">internal UInt32 dwIndex</Member>
+        <Member type="Field">internal WLAN_AVAILABLE_NETWORK[] Network</Member>
+        <Member type="Constructor">internal WLAN_AVAILABLE_NETWORK_LIST(IntPtr ppAvailableNetworkList)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_CONNECTION_ATTRIBUTES</Name>
+        <Access>Public</Access>
+        <Location left="2513" top="795" />
+        <Size width="246" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public WLAN_INTERFACE_STATE isState</Member>
+        <Member type="Field">public WLAN_CONNECTION_MODE wlanConnectionMode</Member>
+        <Member type="Field">public String strProfileMode</Member>
+        <Member type="Field">public WLAN_ASSOCIATION_ATTRIBUTES wlanAssociationAttributes</Member>
+        <Member type="Field">public WLAN_SECURITY_ATTRIBUTES wlanSecurityAttributes</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_CONNECTION_PARAMETERS</Name>
+        <Access>Public</Access>
+        <Location left="1976" top="1417" />
+        <Size width="282" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public WLAN_CONNECTION_MODE wlanConnectionMode</Member>
+        <Member type="Field">public String strProfile</Member>
+        <Member type="Field">public DOT11_SSID pDot11Ssid</Member>
+        <Member type="Field">public DOT11_BSSID_LIST pDesiredBssidList</Member>
+        <Member type="Field">public DOT11_BSS_TYPE dot11BssType</Member>
+        <Member type="Field">public UInt32 dwFlags</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_CONNECTION_SETTINGS</Name>
+        <Access>Public</Access>
+        <Location left="1395" top="176" />
+        <Size width="363" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public DOT11_SSID hostedNetworkSSID</Member>
+        <Member type="Field">public Int32 dwMaxNumberOfPeers</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_DATA_PEER_STATE_CHANGE</Name>
+        <Access>Public</Access>
+        <Location left="4262" top="734" />
+        <Size width="398" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_PEER_STATE OldState</Member>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_PEER_STATE NewState</Member>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_REASON Reason</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_PEER_STATE</Name>
+        <Access>Public</Access>
+        <Location left="3834" top="734" />
+        <Size width="344" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public DOT11_MAC_ADDRESS PeerMacAddress</Member>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_PEER_AUTH_STATE PeerAuthState</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_RADIO_STATE</Name>
+        <Access>Public</Access>
+        <Location left="1548" top="962" />
+        <Size width="292" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public DOT11_RADIO_STATE dot11SoftwareRadioState</Member>
+        <Member type="Field">public DOT11_RADIO_STATE dot11HardwareRadioState</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_SECURITY_SETTINGS</Name>
+        <Access>Public</Access>
+        <Location left="2476" top="119" />
+        <Size width="339" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public DOT11_AUTH_ALGORITHM dot11AuthAlgo</Member>
+        <Member type="Field">public DOT11_CIPHER_ALGORITHM dot11CipherAlgo</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_STATE_CHANGE</Name>
+        <Access>Public</Access>
+        <Location left="3499" top="309" />
+        <Size width="317" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_STATE OldState</Member>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_STATE NewState</Member>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_REASON StateChangeReason</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_HOSTED_NETWORK_STATUS</Name>
+        <Access>Public</Access>
+        <Location left="3347" top="474" />
+        <Size width="308" height="196" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_STATE HostedNetworkState</Member>
+        <Member type="Field">public Guid IPDeviceID</Member>
+        <Member type="Field">public DOT11_MAC_ADDRESS wlanHostedNetworkBSSID</Member>
+        <Member type="Field">public DOT11_PHY_TYPE dot11PhyType</Member>
+        <Member type="Field">public UInt32 ulChannelFrequency</Member>
+        <Member type="Field">public UInt32 dwNumberOfPeers</Member>
+        <Member type="Field">public WLAN_HOSTED_NETWORK_PEER_STATE PeerList</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_INTERFACE_INFO</Name>
+        <Access>Public</Access>
+        <Location left="2293" top="1009" />
+        <Size width="245" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Guid InterfaceGuid</Member>
+        <Member type="Field">public String strInterfaceDescription</Member>
+        <Member type="Field">public WLAN_INTERFACE_STATE isState</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_INTERFACE_INFO_LIST</Name>
+        <Access>Public</Access>
+        <Location left="2293" top="1175" />
+        <Size width="245" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Int32 dwNumberOfItems</Member>
+        <Member type="Field">public Int32 dwIndex</Member>
+        <Member type="Field">public WLAN_INTERFACE_INFO[] InterfaceInfo</Member>
+        <Member type="Constructor">public WLAN_INTERFACE_INFO_LIST(IntPtr pList)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_NOTIFICATION_DATA</Name>
+        <Access>Public</Access>
+        <Location left="1518" top="1160" />
+        <Size width="285" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public WLAN_NOTIFICATION_SOURCE NotificationSource</Member>
+        <Member type="Field">public Int32 _NotificationCode</Member>
+        <Member type="Field">public Guid InterfaceGuid</Member>
+        <Member type="Field">public Int32 dwDataSize</Member>
+        <Member type="Field">public IntPtr pData</Member>
+        <Member type="Property">public Object NotificationCode { get; }</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_PROFILE_INFO</Name>
+        <Access>Public</Access>
+        <Location left="1518" top="609" />
+        <Size width="269" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public String strProfileName</Member>
+        <Member type="Field">public UInt32 dwFlags</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_PROFILE_INFO_LIST</Name>
+        <Access>Public</Access>
+        <Location left="1518" top="410" />
+        <Size width="269" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public UInt32 dwNumberOfItems</Member>
+        <Member type="Field">public UInt32 dwIndex</Member>
+        <Member type="Field">public WLAN_PROFILE_INFO[] ProfileInfo</Member>
+        <Member type="Constructor">public WLAN_PROFILE_INFO_LIST(IntPtr ppProfileList)</Member>
+      </Entity>
+      <Entity type="Structure">
+        <Name>WLAN_SECURITY_ATTRIBUTES</Name>
+        <Access>Public</Access>
+        <Location left="2573" top="574" />
+        <Size width="236" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public Boolean bSecurityEnabled</Member>
+        <Member type="Field">public Boolean bOneXEnabled</Member>
+        <Member type="Field">public DOT11_AUTH_ALGORITHM dot11AuthAlgorithm</Member>
+        <Member type="Field">public DOT11_CIPHER_ALGORITHM dot11CipherAlgorithm</Member>
+      </Entity>
+      <Entity type="Delegate">
+        <Name>WLAN_NOTIFICATION_CALLBACK</Name>
+        <Access>Public</Access>
+        <Location left="846" top="1373" />
+        <Size width="260" height="95" />
+        <Collapsed>False</Collapsed>
+        <ReturnType>Void</ReturnType>
+        <Param>ref WLAN_NOTIFICATION_DATA notificationData</Param>
+        <Param>IntPtr context</Param>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DOT11_AUTH_ALGORITHM</Name>
+        <Access>Public</Access>
+        <Location left="2908" top="119" />
+        <Size width="197" height="214" />
+        <Collapsed>False</Collapsed>
+        <Value>_80211_OPEN = 1</Value>
+        <Value>_80211_SHARED_KEY = 2</Value>
+        <Value>WPA = 3</Value>
+        <Value>WPA_PSK = 4</Value>
+        <Value>WPA_NONE = 5</Value>
+        <Value>RSNA = 6</Value>
+        <Value>RSNA_PSK = 7</Value>
+        <Value>IHV_START</Value>
+        <Value>IHV_END</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DOT11_BSS_TYPE</Name>
+        <Access>Public</Access>
+        <Location left="2075" top="476" />
+        <Size width="162" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>INFRASTRUSTURE = 1</Value>
+        <Value>INDEPENDENT = 2</Value>
+        <Value>ANY = 3</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DOT11_CIPHER_ALGORITHM</Name>
+        <Access>Public</Access>
+        <Location left="2635" top="285" />
+        <Size width="203" height="231" />
+        <Collapsed>False</Collapsed>
+        <Value>NONE = 0</Value>
+        <Value>WEP40 = 1</Value>
+        <Value>TKIP = 2</Value>
+        <Value>CCMP = 4</Value>
+        <Value>WEP104 = 5</Value>
+        <Value>WPA_USE_GROUP = 256</Value>
+        <Value>RSN_USE_GROUP = 256</Value>
+        <Value>WEP = 257</Value>
+        <Value>IHV_START</Value>
+        <Value>IHV_END</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DOT11_PHY_TYPE</Name>
+        <Access>Public</Access>
+        <Location left="3141" top="25" />
+        <Size width="162" height="248" />
+        <Collapsed>False</Collapsed>
+        <Value>UNKNOWN = 0</Value>
+        <Value>ANY = 0</Value>
+        <Value>FHSS = 1</Value>
+        <Value>DSSS = 2</Value>
+        <Value>IRBASEBAND = 3</Value>
+        <Value>OFDM = 4</Value>
+        <Value>HRDSS = 5</Value>
+        <Value>ERP = 6</Value>
+        <Value>HT = 7</Value>
+        <Value>IHV_START</Value>
+        <Value>IHV_END</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>DOT11_RADIO_STATE</Name>
+        <Access>Public</Access>
+        <Location left="1548" top="798" />
+        <Size width="292" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>UNKNOWN = 0</Value>
+        <Value>ON = 1</Value>
+        <Value>OFF = 2</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_CONNECTION_MODE</Name>
+        <Access>Public</Access>
+        <Location left="2293" top="443" />
+        <Size width="201" height="163" />
+        <Collapsed>False</Collapsed>
+        <Value>PROFILE = 0</Value>
+        <Value>TEMPORARY_PROFILE = 1</Value>
+        <Value>DISCOVERY_SECURE = 2</Value>
+        <Value>DISCOVERY_UNCECURE = 3</Value>
+        <Value>AUTO = 4</Value>
+        <Value>IVALID = 5</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_HOSTED_NETWORK_NOTIFICATION_CODE</Name>
+        <Access>Public</Access>
+        <Location left="10" top="170" />
+        <Size width="336" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>STATE_CHANGE = 4096</Value>
+        <Value>PEER_STATE_CHANGE = 4097</Value>
+        <Value>RADIO_STATE_CHANGE = 4098</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_HOSTED_NETWORK_OPCODE</Name>
+        <Access>Public</Access>
+        <Location left="253" top="12" />
+        <Size width="261" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>CONNECTION_SETTINGS = 0</Value>
+        <Value>SECURITY_SETTINGS = 1</Value>
+        <Value>STATION_PROFILE = 2</Value>
+        <Value>OPCODE_ENABLE = 3</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_HOSTED_NETWORK_PEER_AUTH_STATE</Name>
+        <Access>Public</Access>
+        <Location left="3834" top="584" />
+        <Size width="344" height="95" />
+        <Collapsed>False</Collapsed>
+        <Value>INVALID = 0</Value>
+        <Value>AUTHENTICATED = 1</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_HOSTED_NETWORK_REASON</Name>
+        <Access>Public</Access>
+        <Location left="3859" top="10" />
+        <Size width="277" height="554" />
+        <Collapsed>False</Collapsed>
+        <Value>SUCCESS = 0</Value>
+        <Value>UNSPECIFIED = 1</Value>
+        <Value>PARAMETERS = 2</Value>
+        <Value>SHUTTING_DOWN = 3</Value>
+        <Value>INSUFFICIENT_RESOURCES = 4</Value>
+        <Value>ELEVATION_REQUIRED = 5</Value>
+        <Value>READ_ONLY = 6</Value>
+        <Value>PERSISTANCE_FAILED = 7</Value>
+        <Value>CRYPT_ERROR = 8</Value>
+        <Value>IMPERSONATION = 9</Value>
+        <Value>STOP_BEFORE_START = 10</Value>
+        <Value>INTERFACE_AVAILABLE = 11</Value>
+        <Value>INTERFACE_UNAVAILABLE = 12</Value>
+        <Value>MINIPORT_STOPPED = 13</Value>
+        <Value>MINIPORT_STARTED = 14</Value>
+        <Value>INCOMPATIBLE_CONNECTION_STARTED = 15</Value>
+        <Value>INCOMPATIBLE_CONNECTION_STOPPED = 16</Value>
+        <Value>USER_ACTION = 17</Value>
+        <Value>CLIENT_ABORT = 18</Value>
+        <Value>AP_START_FAILED = 19</Value>
+        <Value>PEER_ARRIVED = 20</Value>
+        <Value>PEER_DEPARTED = 21</Value>
+        <Value>PEER_TIMEOUT = 22</Value>
+        <Value>GP_DENIED = 23</Value>
+        <Value>SERVICE_UNAVAILABLE = 24</Value>
+        <Value>DEVICE_CHANGE = 25</Value>
+        <Value>PROPERTIES_CHANGE = 26</Value>
+        <Value>VIRTUAL_STATION_BLOCKING_USE = 27</Value>
+        <Value>SERVICE_AVAILABLE_ON_VIRTUAL_STATION = 28</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_HOSTED_NETWORK_STATE</Name>
+        <Access>Public</Access>
+        <Location left="3452" top="25" />
+        <Size width="251" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>UNAVAILABLE = 0</Value>
+        <Value>IDLE = 1</Value>
+        <Value>ACTIVE = 2</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_INTERFACE_STATE</Name>
+        <Access>Public</Access>
+        <Location left="2610" top="1009" />
+        <Size width="245" height="197" />
+        <Collapsed>False</Collapsed>
+        <Value>NOT_READY = 0</Value>
+        <Value>CONNECTED = 1</Value>
+        <Value>AD_HOC_NETWORK_FORMED = 2</Value>
+        <Value>DISCONNECTING = 3</Value>
+        <Value>DISCONNECTED = 4</Value>
+        <Value>ASSOCIATING = 5</Value>
+        <Value>DISCOVERING = 6</Value>
+        <Value>AUTHENTICATING = 7</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_INTF_OPCODE</Name>
+        <Access>Public</Access>
+        <Location left="1052" top="12" />
+        <Size width="310" height="469" />
+        <Collapsed>False</Collapsed>
+        <Value>AUTOCONF_START = 0</Value>
+        <Value>AUTOCONF_ENABLED = 1</Value>
+        <Value>BACKGROUND_SCAN_ENABLED = 2</Value>
+        <Value>MEDIA_STREAMING_MODE = 3</Value>
+        <Value>RADIO_STATE = 4</Value>
+        <Value>BSS_TYPE = 5</Value>
+        <Value>INTERFACE_STATE = 6</Value>
+        <Value>CURRENT_CONNECTION = 7</Value>
+        <Value>CHANNEL_NUMBER = 8</Value>
+        <Value>SUPPORTED_INFRASTRUCTURE_AUTH_CIPHER_PAIRS = 9</Value>
+        <Value>SUPPORTED_ADHOC_AUTH_CIPHER_PAIRS = 10</Value>
+        <Value>SUPPORTED_COUNTRY_OR_REGION_STRING_LIST = 11</Value>
+        <Value>CURRENT_OPERATION_MODE = 12</Value>
+        <Value>SUPPORTED_SAFE_MODE = 13</Value>
+        <Value>CERTIFIED_SAFE_MODE = 14</Value>
+        <Value>AUTOCONF_END = 268435455</Value>
+        <Value>MSM_START = 268435712</Value>
+        <Value>STATISTICS = 268435713</Value>
+        <Value>RSSI = 268435714</Value>
+        <Value>MSM_END = 536870911</Value>
+        <Value>SECURITY_START = 536936448</Value>
+        <Value>SECURITY_END = 805306367</Value>
+        <Value>IHV_START = 805306368</Value>
+        <Value>IHV_END = 1073741823</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_NOTIFICATION_ACM</Name>
+        <Access>Public</Access>
+        <Location left="800" top="14" />
+        <Size width="222" height="452" />
+        <Collapsed>False</Collapsed>
+        <Value>START = 0</Value>
+        <Value>AUTOCONF_ENABLED = 1</Value>
+        <Value>AUTOCONF_DISABLED = 2</Value>
+        <Value>BACKGROUND_SCAN_ENABLED = 3</Value>
+        <Value>BACKGROUND_SCAN_DISABLED = 4</Value>
+        <Value>BSS_TYPE_CHANGE = 5</Value>
+        <Value>POWER_SETTING_CHANGE = 6</Value>
+        <Value>SCAN_COMPLETE = 7</Value>
+        <Value>SCAN_FAIL = 8</Value>
+        <Value>CONNECTION_START = 9</Value>
+        <Value>CONNECTION_COMPLETE = 10</Value>
+        <Value>CONNECTION_ATTEMPT_FAIL = 11</Value>
+        <Value>FILTER_LIST_CHANGE = 12</Value>
+        <Value>INTERFACE_ARRIVAL = 13</Value>
+        <Value>INTERFACE_REMOVAL = 14</Value>
+        <Value>PROFILE_CHANGE = 15</Value>
+        <Value>PROFILE_NAME_CHANGE = 16</Value>
+        <Value>PROFILES_EXHAUSTED = 17</Value>
+        <Value>NETWORK_NOT_AVAILABLE = 18</Value>
+        <Value>NETWORK_AVAILABLE = 19</Value>
+        <Value>DISCONNECTING = 20</Value>
+        <Value>DISCONNECTED = 21</Value>
+        <Value>ADHOC_NETWORK_STATE_CHANGE = 22</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_NOTIFICATION_CODE_MSM</Name>
+        <Access>Public</Access>
+        <Location left="537" top="14" />
+        <Size width="238" height="316" />
+        <Collapsed>False</Collapsed>
+        <Value>START = 0</Value>
+        <Value>ASSOCIATING = 1</Value>
+        <Value>ASSOCIATED = 2</Value>
+        <Value>AUTHENTICATING = 3</Value>
+        <Value>CONNECTED = 4</Value>
+        <Value>ROAMING_START = 5</Value>
+        <Value>ROAMING_END = 6</Value>
+        <Value>RADIO_STATE_CHANGE = 7</Value>
+        <Value>SIGNAL_QUALITY_CHANGE = 8</Value>
+        <Value>DISASSOCIATING = 9</Value>
+        <Value>DISCONNECTED = 10</Value>
+        <Value>PEER_JOIN = 11</Value>
+        <Value>PEER_LEAVE = 12</Value>
+        <Value>ADAPTER_REMOVAL = 13</Value>
+        <Value>ADAPTER_OPERATION_MODE_CHANGE = 14</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_NOTIFICATION_SOURCE</Name>
+        <Access>Public</Access>
+        <Location left="1518" top="1389" />
+        <Size width="285" height="197" />
+        <Collapsed>False</Collapsed>
+        <Value>NONE = 0</Value>
+        <Value>ONEX = 4</Value>
+        <Value>ACM = 8</Value>
+        <Value>MSM = 16</Value>
+        <Value>SECURITY = 32</Value>
+        <Value>IHV = 64</Value>
+        <Value>HNWK = 128</Value>
+        <Value>ALL = 65535</Value>
+      </Entity>
+      <Entity type="Enum">
+        <Name>WLAN_OPCODE_VALUE_TYPE</Name>
+        <Access>Public</Access>
+        <Location left="12" top="12" />
+        <Size width="217" height="129" />
+        <Collapsed>False</Collapsed>
+        <Value>QUERY_ONLY = 0</Value>
+        <Value>SET_BY_GROUP_POLICY = 1</Value>
+        <Value>SET_BY_USER = 2</Value>
+        <Value>INVALID = 3</Value>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Nesting" first="3" second="26">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>972</X>
+          <Y>1348</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="26">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_notificationCallback</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3614</X>
+          <Y>1161</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3614</X>
+          <Y>1096</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>Header</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3408</X>
+          <Y>1076</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3408</X>
+          <Y>946</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>BSSIDs</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3174</X>
+          <Y>1643</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1903</X>
+          <Y>303</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11Ssid</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="28">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3024</X>
+          <Y>1345</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2181</X>
+          <Y>631</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11BssType</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3321</X>
+          <Y>796</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11Bssid</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="8" second="30">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3190</X>
+          <Y>298</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11PhyType</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2109</X>
+          <Y>213</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11Ssid</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="28">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2226</X>
+          <Y>404</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2115</X>
+          <Y>435</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11BssType</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="30">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2495</X>
+          <Y>50</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3112</X>
+          <Y>50</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11PhyTypes</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="27">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2515</X>
+          <Y>75</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2999</X>
+          <Y>94</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11DefaultAuthAlgorithm</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="29">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2488</X>
+          <Y>305</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2602</X>
+          <Y>305</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11DefaultCipherAlgorithm</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="10" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>Network</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="38">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2691</X>
+          <Y>982</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>isState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="32">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2441</X>
+          <Y>631</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>wlanConnectionMode</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="8">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2784</X>
+          <Y>813</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2962</X>
+          <Y>813</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>wlanAssociationAttributes</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="25">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2606</X>
+          <Y>767</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2606</X>
+          <Y>751</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>wlanSecurityAttributes</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="12" second="32">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2233</X>
+          <Y>1300</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2378</X>
+          <Y>638</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>wlanConnectionMode</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="12" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2003</X>
+          <Y>1386</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>pDot11Ssid</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="12" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2466</X>
+          <Y>1486</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3389</X>
+          <Y>1290</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>pDesiredBssidList</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="12" second="28">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2107</X>
+          <Y>1363</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2107</X>
+          <Y>635</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11BssType</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="13" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>hostedNetworkSSID</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="14" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>4203</X>
+          <Y>763</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>OldState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="14" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>4203</X>
+          <Y>813</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>NewState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="14" second="36">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>4161</X>
+          <Y>522</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>Reason</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="15" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3563</X>
+          <Y>809</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>PeerMacAddress</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="15" second="35">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>PeerAuthState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="31">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1597</X>
+          <Y>935</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11SoftwareRadioState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="16" second="31">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1797</X>
+          <Y>948</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11HardwareRadioState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="27">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2840</X>
+          <Y>143</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2883</X>
+          <Y>143</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11AuthAlgo</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="17" second="29">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2691</X>
+          <Y>272</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2691</X>
+          <Y>260</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11CipherAlgo</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="18" second="37">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3575</X>
+          <Y>284</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3575</X>
+          <Y>174</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>OldState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="18" second="37">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3655</X>
+          <Y>284</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3655</X>
+          <Y>182</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>NewState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="18" second="36">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3773</X>
+          <Y>282</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3834</X>
+          <Y>170</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>StateChangeReason</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="37">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3489</X>
+          <Y>440</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3489</X>
+          <Y>171</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>HostedNetworkState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3408</X>
+          <Y>709</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>wlanHostedNetworkBSSID</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="30">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3372</X>
+          <Y>433</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3260</X>
+          <Y>302</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11PhyType</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="19" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3808</X>
+          <Y>754</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>PeerList</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="20" second="38">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2563</X>
+          <Y>1078</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2585</X>
+          <Y>1078</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>isState</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="21" second="20">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2401</X>
+          <Y>1150</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2401</X>
+          <Y>1163</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>InterfaceInfo</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="22" second="42">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>NotificationSource</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="24" second="23">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1652</X>
+          <Y>580</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1652</X>
+          <Y>580</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>ProfileInfo</StartRole>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="25" second="27">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>2948</X>
+          <Y>396</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11AuthAlgorithm</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="25" second="29">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2676</X>
+          <Y>548</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2676</X>
+          <Y>554</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>dot11CipherAlgorithm</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
