@@ -9,7 +9,7 @@ namespace NetShare.Host
 	{
 		public SharableConnection() { }
 
-		public SharableConnection(ICSConnection connection)
+		public SharableConnection(IcsConnection connection)
 		{
 			Name = connection.Name;
 			DeviceName = connection.DeviceName;

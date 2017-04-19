@@ -11,7 +11,7 @@ namespace NetShare.Host
 	public class NetShareHost
 	{
 		private WlanManager _wlanManager;
-		private ICSManager _icsManager;
+		private IcsManager _icsManager;
 
 		private SharableConnection _currentSharedConnection;
 
@@ -27,7 +27,7 @@ namespace NetShare.Host
 		public NetShareHost()
 		{
 			_wlanManager = new WlanManager();
-			_icsManager = new ICSManager();
+			_icsManager = new IcsManager();
 
 			_wlanManager.StationJoin += _wlanManager_StationStateChange;
 			_wlanManager.StationLeave += _wlanManager_StationStateChange;
@@ -205,14 +205,14 @@ namespace NetShare.Host
 
 		public IEnumerable<SharableConnection> GetSharableConnections()
 		{
-			List<ICSConnection> connections;
+			List<IcsConnection> connections;
 			try
 			{
 				connections = _icsManager.Connections;
 			}
 			catch
 			{
-				connections = new List<ICSConnection>();
+				connections = new List<IcsConnection>();
 			}
 
 			// Empty item to signify No Connection Sharing
