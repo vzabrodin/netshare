@@ -108,7 +108,9 @@ namespace NetShare.Cilent
 				{
 					Invoke(new StartStopCallback(StartStopThreadSafe), isStart);
 				}
-				catch { }
+				catch
+				{
+				}
 			}
 			else
 			{
@@ -221,7 +223,6 @@ namespace NetShare.Cilent
 
 		private void About()
 		{
-			Text = string.Format("О программе {0}", AssemblyTitle);
 			labelProductName.Text = AssemblyProduct;
 			labelVersion.Text = string.Format("Версия {0}", AssemblyVersion);
 			labelCopyright.Text = AssemblyCopyright;
