@@ -91,14 +91,13 @@ Filename: "{app}\NetShare.Service.exe"; Parameters: "/uninstall"; Flags: runhidd
 #include "scripts\dotnet.pas"
 #include "scripts\uninstall_before.pas"
                                   
-function InitializeSetup(): boolean;
+procedure InitializeWizard();
 begin
   if not IsDotNetDetected('v4.0 Full Profile', 0) then
   begin
-    idpAddFile('http://go.microsoft.com/fwlink/?LinkId=397707', ExpandConstant('{tmp}\NetFrameworkInstaller.exe'));
+    idpAddFile('http://go.microsoft.com/fwlink/?LinkId=225704', ExpandConstant('{tmp}\NetFrameworkInstaller.exe'));
     idpDownloadAfter(wpReady);
   end;
-  result := true;
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
