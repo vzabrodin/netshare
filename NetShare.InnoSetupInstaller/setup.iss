@@ -1,8 +1,8 @@
 #include <idp.iss>
 
 #define MyAppName "NetShare"
-#define MyAppVersion "1.0.0.127"
-#define MyAppTextVersion "v1.00 build 127"
+#define MyAppVersion "1.0.0.128"
+#define MyAppTextVersion "v1.00 build 128"
 #define MyAppPublisher "Vitaliy Zabrodin"
 #define MyAppCopyright "Copyright (c) 2017 Vitaliy Zabrodin"
 #define MyAppExeName "NetShare.exe"
@@ -95,7 +95,7 @@ procedure InitializeWizard();
 begin
   if not IsDotNetDetected('v4.0 Full Profile', 0) then
   begin
-    idpAddFile('http://go.microsoft.com/fwlink/?LinkId=225704', ExpandConstant('{tmp}\NetFrameworkInstaller.exe'));
+    idpAddFile('http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe', ExpandConstant('{tmp}\NetFrameworkInstaller.exe'));
     idpDownloadAfter(wpReady);
   end;
 end;

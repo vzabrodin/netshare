@@ -18,3 +18,7 @@ NetShare v1.00, build 126 (2017-04-13)
 ======================================
 + Added installer
 x Throws exception if the registry key doesn't exist
+
+NetShare v1.00, build 128 (2017-04-27)
+======================================
+x Throws exception if Wi-Fi adapter doesn't exist or doesn't support hosted network
