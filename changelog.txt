@@ -17,4 +17,4 @@ x Throws exception when the service unexpectedly closes
 NetShare v1.00, build 126 (2017-04-13)
 ======================================
 + Added installer
-x Throws exception when the registry key doesn't exist
+x Throws exception if the registry key doesn't exist
