@@ -54,7 +54,7 @@ namespace NetShare.WLAN
 			catch
 			{
 				wlanapi.WlanCloseHandle(_WlanHandle, IntPtr.Zero);
-				throw;
+				throw new Exception("Failed to create instance of hosted network\nMaybe your computer doesn't support hosted network");
 			}
 		}
 
@@ -535,6 +535,14 @@ namespace NetShare.WLAN
 			get
 			{
 				return (HostedNetworkState == WLAN_HOSTED_NETWORK_STATE.ACTIVE);
+			}
+		}
+
+		public bool IsSupported
+		{
+			get
+			{
+				return (HostedNetworkState != WLAN_HOSTED_NETWORK_STATE.UNAVAILABLE);
 			}
 		}
 

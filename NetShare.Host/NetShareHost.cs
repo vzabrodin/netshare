@@ -276,6 +276,14 @@ namespace NetShare.Host
 			}
 		}
 
+		public bool IsSupported
+		{
+			get
+			{
+				return _wlanManager.IsSupported;
+			}
+		}
+
 		public IEnumerable<ConnectedPeer> GetConnectedPeers()
 		{
 			foreach (var v in _wlanManager.Stations)

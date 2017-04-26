@@ -2,8 +2,9 @@
 using System.Windows.Forms;
 using System.Linq;
 using System.ServiceProcess;
-using NetShare.Host;
 using System.Reflection;
+using NetShare.Host;
+using Microsoft.Win32;
 
 namespace NetShare.Cilent
 {
@@ -16,6 +17,42 @@ namespace NetShare.Cilent
 		{
 			InitializeComponent();
 			About();
+		}
+
+		private bool CheckServices()
+		{
+			try
+			{
+				// ICS (Internet Connection Sharing)
+				using (var svc = new ServiceController("SharedAccess"))
+				{
+					if (svc.Status != ServiceControllerStatus.Running)
+					{
+						svc.Start();
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			try
+			{
+				_service = new ServiceController(NetShare.Service.Properties.Resources.ServiceName);
+				if (_service.Status != ServiceControllerStatus.Running)
+				{
+					_service.Start(new string[] { "/noautostart" });
+				}
+			}
+			catch (InvalidOperationException)
+			{
+				MessageBox.Show("Service NetShareService was not found on computer.\nPlease reinstall program", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			return true;
 		}
 
 		private void UpdateControls()
@@ -32,19 +69,15 @@ namespace NetShare.Cilent
 
 		private void FormMain_Load(object sender, EventArgs e)
 		{
-			_netsh = new NetShareHost();
 			try
 			{
-				_service = new ServiceController(NetShare.Service.Properties.Resources.ServiceName);
-				if (_service.Status != ServiceControllerStatus.Running)
-				{
-					_service.Start(new string[] { "/noautostart" });
-				}
+				_netsh = new NetShareHost();
 			}
-			catch (InvalidOperationException)
+			catch (Exception ex)
 			{
-				MessageBox.Show("Service NetShareService was not found on computer.\nPlease reinstall program", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(ex.Message, "NetShare", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				Application.Exit();
+				return;
 			}
 
 			Configuration conf = new Configuration();
@@ -52,12 +85,13 @@ namespace NetShare.Cilent
 
 			txtSSID.Text = _netsh.GetConnectionSettings().SSID;
 			txtPassword.Text = _netsh.GetPassword();
-			foreach (var item in _netsh.GetSharableConnections())
+
+			var conns = _netsh.GetSharableConnections();
+			foreach (var item in conns)
 			{
 				cmbShareAdapter.Items.Add(item);
 			}
 
-			var conns = _netsh.GetSharableConnections();
 			SharableConnection sharedConnection = null;
 			sharedConnection = (from c in conns
 								where c.Guid == conf.SharedConnection
