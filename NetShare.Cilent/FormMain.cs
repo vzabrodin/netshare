@@ -90,7 +90,6 @@ namespace NetShare.Cilent
 			conf.Read();
 
 			txtSSID.Text = _netsh.GetConnectionSettings().SSID;
-			nudMaxPeers.Value = _netsh.GetConnectionSettings().MaxPeerCount;
 			txtPassword.Text = _netsh.GetPassword();
 
 			var conns = _netsh.GetSharableConnections();
@@ -267,7 +266,7 @@ namespace NetShare.Cilent
 
 		private void ConfigSave()
 		{
-			_netsh.SetConnectionSettings(txtSSID.Text, (int)nudMaxPeers.Value);
+			_netsh.SetConnectionSettings(txtSSID.Text, 10);
 			_netsh.SetPassword(txtPassword.Text);
 			new Configuration(chckIsAutostart.Checked, (cmbShareAdapter.SelectedItem as SharableConnection).Guid).Write();
 		}

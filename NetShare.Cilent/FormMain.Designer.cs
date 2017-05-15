@@ -34,8 +34,6 @@
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabSettings = new System.Windows.Forms.TabPage();
 			this.panSettingsInput = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.nudMaxPeers = new System.Windows.Forms.NumericUpDown();
 			this.txtSSID = new System.Windows.Forms.TextBox();
 			this.chckIsAutostart = new System.Windows.Forms.CheckBox();
 			this.lblSSID = new System.Windows.Forms.Label();
@@ -64,7 +62,6 @@
 			this.tabControl1.SuspendLayout();
 			this.tabSettings.SuspendLayout();
 			this.panSettingsInput.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudMaxPeers)).BeginInit();
 			this.tabConnectedPeers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.contextMenuStrip1.SuspendLayout();
@@ -106,8 +103,6 @@
 			// 
 			this.panSettingsInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.panSettingsInput.Controls.Add(this.label1);
-			this.panSettingsInput.Controls.Add(this.nudMaxPeers);
 			this.panSettingsInput.Controls.Add(this.txtSSID);
 			this.panSettingsInput.Controls.Add(this.chckIsAutostart);
 			this.panSettingsInput.Controls.Add(this.lblSSID);
@@ -118,24 +113,8 @@
 			this.panSettingsInput.Controls.Add(this.cmbShareAdapter);
 			this.panSettingsInput.Location = new System.Drawing.Point(6, 6);
 			this.panSettingsInput.Name = "panSettingsInput";
-			this.panSettingsInput.Size = new System.Drawing.Size(340, 131);
+			this.panSettingsInput.Size = new System.Drawing.Size(340, 102);
 			this.panSettingsInput.TabIndex = 9;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(3, 84);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(59, 13);
-			this.label1.TabIndex = 7;
-			this.label1.Text = "Max peers:";
-			// 
-			// nudMaxPeers
-			// 
-			this.nudMaxPeers.Location = new System.Drawing.Point(111, 82);
-			this.nudMaxPeers.Name = "nudMaxPeers";
-			this.nudMaxPeers.Size = new System.Drawing.Size(68, 20);
-			this.nudMaxPeers.TabIndex = 6;
 			// 
 			// txtSSID
 			// 
@@ -149,7 +128,7 @@
 			// chckIsAutostart
 			// 
 			this.chckIsAutostart.AutoSize = true;
-			this.chckIsAutostart.Location = new System.Drawing.Point(111, 108);
+			this.chckIsAutostart.Location = new System.Drawing.Point(111, 82);
 			this.chckIsAutostart.Name = "chckIsAutostart";
 			this.chckIsAutostart.Size = new System.Drawing.Size(68, 17);
 			this.chckIsAutostart.TabIndex = 5;
@@ -451,7 +430,6 @@
 			this.tabSettings.ResumeLayout(false);
 			this.panSettingsInput.ResumeLayout(false);
 			this.panSettingsInput.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.nudMaxPeers)).EndInit();
 			this.tabConnectedPeers.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.contextMenuStrip1.ResumeLayout(false);
@@ -492,8 +470,6 @@
 		private System.Windows.Forms.PictureBox logoPictureBox;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem toolstripDatagridUpdate;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.NumericUpDown nudMaxPeers;
 	}
 }
 
