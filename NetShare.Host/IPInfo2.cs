@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace NetShare.Host
 {
@@ -50,6 +50,7 @@ namespace NetShare.Host
 		private static extern int GetIpNetTable(IntPtr pIpNetTable, [MarshalAs(UnmanagedType.U4)] ref int pdwSize, bool bOrder);
 
 		[DllImport("IpHlpApi.dll", SetLastError = true, CharSet = CharSet.Auto)]
+		[return: MarshalAs(UnmanagedType.U4)]
 		private static extern int FreeMibTable(IntPtr plpNetTable);
 
 		private const int ERROR_INSUFFICIENT_BUFFER = 122;
@@ -89,7 +90,7 @@ namespace NetShare.Host
 		public static IPInfo2 GetIPInfo(string mac)
 		{
 			IPInfo2 ipinfo = null;
-			ipinfo = (from ip in IPInfo2.GetIPInfo()
+			ipinfo = (from ip in GetIPInfo()
 					  where ip.MacAddress.ToLowerInvariant() == mac.ToLowerInvariant() && new Ping().Send(ip.IPAddress).Status == IPStatus.Success
 					  select ip).FirstOrDefault();
 			return ipinfo;

@@ -1,4 +1,3 @@
 TODO:
 BUGS:
-	(?) Doesn't retrieve a hostname of connected peer in some cases (IPInfo2)
 	Max peers parameter doesn't apply

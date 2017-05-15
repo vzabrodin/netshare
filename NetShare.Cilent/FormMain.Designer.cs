@@ -28,11 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabSettings = new System.Windows.Forms.TabPage();
 			this.panSettingsInput = new System.Windows.Forms.Panel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.nudMaxPeers = new System.Windows.Forms.NumericUpDown();
 			this.txtSSID = new System.Windows.Forms.TextBox();
 			this.chckIsAutostart = new System.Windows.Forms.CheckBox();
 			this.lblSSID = new System.Windows.Forms.Label();
@@ -49,18 +52,22 @@
 			this.hostName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.macAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.toolstripDatagridUpdate = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabAbout = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.logoPictureBox = new System.Windows.Forms.PictureBox();
 			this.labelProductName = new System.Windows.Forms.Label();
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelCopyright = new System.Windows.Forms.Label();
 			this.labelCompanyName = new System.Windows.Forms.Label();
-			this.logoPictureBox = new System.Windows.Forms.PictureBox();
 			this.tabControl1.SuspendLayout();
 			this.tabSettings.SuspendLayout();
 			this.panSettingsInput.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudMaxPeers)).BeginInit();
 			this.tabConnectedPeers.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.contextMenuStrip1.SuspendLayout();
 			this.tabAbout.SuspendLayout();
 			this.tableLayoutPanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
@@ -99,6 +106,8 @@
 			// 
 			this.panSettingsInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.panSettingsInput.Controls.Add(this.label1);
+			this.panSettingsInput.Controls.Add(this.nudMaxPeers);
 			this.panSettingsInput.Controls.Add(this.txtSSID);
 			this.panSettingsInput.Controls.Add(this.chckIsAutostart);
 			this.panSettingsInput.Controls.Add(this.lblSSID);
@@ -109,8 +118,24 @@
 			this.panSettingsInput.Controls.Add(this.cmbShareAdapter);
 			this.panSettingsInput.Location = new System.Drawing.Point(6, 6);
 			this.panSettingsInput.Name = "panSettingsInput";
-			this.panSettingsInput.Size = new System.Drawing.Size(340, 107);
+			this.panSettingsInput.Size = new System.Drawing.Size(340, 131);
 			this.panSettingsInput.TabIndex = 9;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 84);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(59, 13);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "Max peers:";
+			// 
+			// nudMaxPeers
+			// 
+			this.nudMaxPeers.Location = new System.Drawing.Point(111, 82);
+			this.nudMaxPeers.Name = "nudMaxPeers";
+			this.nudMaxPeers.Size = new System.Drawing.Size(68, 20);
+			this.nudMaxPeers.TabIndex = 6;
 			// 
 			// txtSSID
 			// 
@@ -124,7 +149,7 @@
 			// chckIsAutostart
 			// 
 			this.chckIsAutostart.AutoSize = true;
-			this.chckIsAutostart.Location = new System.Drawing.Point(111, 82);
+			this.chckIsAutostart.Location = new System.Drawing.Point(111, 108);
 			this.chckIsAutostart.Name = "chckIsAutostart";
 			this.chckIsAutostart.Size = new System.Drawing.Size(68, 17);
 			this.chckIsAutostart.TabIndex = 5;
@@ -258,6 +283,7 @@
             this.hostName,
             this.ipAddress,
             this.macAddress});
+			this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
 			this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
 			this.dataGridView1.Location = new System.Drawing.Point(6, 6);
 			this.dataGridView1.MultiSelect = false;
@@ -296,6 +322,20 @@
 			this.macAddress.ReadOnly = true;
 			this.macAddress.Width = 113;
 			// 
+			// contextMenuStrip1
+			// 
+			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolstripDatagridUpdate});
+			this.contextMenuStrip1.Name = "contextMenuStrip1";
+			this.contextMenuStrip1.Size = new System.Drawing.Size(113, 26);
+			// 
+			// toolstripDatagridUpdate
+			// 
+			this.toolstripDatagridUpdate.Name = "toolstripDatagridUpdate";
+			this.toolstripDatagridUpdate.Size = new System.Drawing.Size(112, 22);
+			this.toolstripDatagridUpdate.Text = "Update";
+			this.toolstripDatagridUpdate.Click += new System.EventHandler(this.cmDataGridUpdate_Click);
+			// 
 			// tabAbout
 			// 
 			this.tabAbout.Controls.Add(this.tableLayoutPanel);
@@ -332,6 +372,18 @@
 			this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel.Size = new System.Drawing.Size(346, 205);
 			this.tableLayoutPanel.TabIndex = 1;
+			// 
+			// logoPictureBox
+			// 
+			this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.logoPictureBox.Image = global::NetShare.Cilent.Properties.Resources.icon;
+			this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+			this.logoPictureBox.Name = "logoPictureBox";
+			this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 4);
+			this.logoPictureBox.Size = new System.Drawing.Size(108, 110);
+			this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.logoPictureBox.TabIndex = 12;
+			this.logoPictureBox.TabStop = false;
 			// 
 			// labelProductName
 			// 
@@ -381,18 +433,6 @@
 			this.labelCompanyName.Text = "Название организации";
 			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// logoPictureBox
-			// 
-			this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.logoPictureBox.Image = global::NetShare.Cilent.Properties.Resources.icon;
-			this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
-			this.logoPictureBox.Name = "logoPictureBox";
-			this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 4);
-			this.logoPictureBox.Size = new System.Drawing.Size(108, 110);
-			this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.logoPictureBox.TabIndex = 12;
-			this.logoPictureBox.TabStop = false;
-			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,12 +446,15 @@
 			this.Text = "NetShare";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
 			this.Load += new System.EventHandler(this.FormMain_Load);
+			this.Shown += new System.EventHandler(this.FormMain_Shown);
 			this.tabControl1.ResumeLayout(false);
 			this.tabSettings.ResumeLayout(false);
 			this.panSettingsInput.ResumeLayout(false);
 			this.panSettingsInput.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudMaxPeers)).EndInit();
 			this.tabConnectedPeers.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.contextMenuStrip1.ResumeLayout(false);
 			this.tabAbout.ResumeLayout(false);
 			this.tableLayoutPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
@@ -447,6 +490,10 @@
 		private System.Windows.Forms.Label labelCopyright;
 		private System.Windows.Forms.Label labelCompanyName;
 		private System.Windows.Forms.PictureBox logoPictureBox;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem toolstripDatagridUpdate;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.NumericUpDown nudMaxPeers;
 	}
 }
 

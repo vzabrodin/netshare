@@ -4,7 +4,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Reflection;
 using NetShare.Host;
-using Microsoft.Win32;
+using System.Threading;
 
 namespace NetShare.Cilent
 {
@@ -80,10 +80,17 @@ namespace NetShare.Cilent
 				return;
 			}
 
+			if (!CheckServices())
+			{
+				Application.Exit();
+				return;
+			}
+
 			Configuration conf = new Configuration();
 			conf.Read();
 
 			txtSSID.Text = _netsh.GetConnectionSettings().SSID;
+			nudMaxPeers.Value = _netsh.GetConnectionSettings().MaxPeerCount;
 			txtPassword.Text = _netsh.GetPassword();
 
 			var conns = _netsh.GetSharableConnections();
@@ -113,14 +120,20 @@ namespace NetShare.Cilent
 			chckIsAutostart.Checked = conf.IsAutostart;
 
 			UpdateControls();
-			if (_netsh.IsStarted)
-			{
-				UpdateConnectionsListChangedSafe();
-			}
 
 			_netsh.ConnectionsListChanged += _netsh_OnConnectionsListChanged;
 			_netsh.HostedNetworkStarted += _netsh_HostedNetworkStarted;
 			_netsh.HostedNetworkStopped += _netsh_HostedNetworkStopped;
+		}
+
+		private void FormMain_Shown(object sender, EventArgs e)
+		{
+			UpdateConnectionsListChangedSafe();
+		}
+
+		private void cmDataGridUpdate_Click(object sender, EventArgs e)
+		{
+			UpdateConnectionsListChangedSafe();
 		}
 
 		private void _netsh_HostedNetworkStarted(NetShareHost hostedNetworkManager)
@@ -163,6 +176,23 @@ namespace NetShare.Cilent
 			}
 		}
 
+		private void DataGridAddConnectionSafe(object macAddress)
+		{
+			string MacAddress = (string)macAddress;
+			IPInfo2 ipInfo = null;
+			for (int i = 0; i < 5; i++)
+			{
+				ipInfo = IPInfo2.GetIPInfo(MacAddress.ToLowerInvariant());
+				if (ipInfo != null)
+				{
+					dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
+					return;
+				}
+				Thread.Sleep(5000);
+			}
+			dataGridView1.Rows.Add("Unknown", "Unknown", MacAddress);
+		}
+
 		private delegate void DelegateVoid();
 		private void UpdateConnectionsListChangedSafe()
 		{
@@ -178,18 +208,13 @@ namespace NetShare.Cilent
 			}
 			else
 			{
-				dataGridView1.Rows.Clear();
-				foreach (var item in _netsh.GetConnectedPeers())
+				if (_netsh.IsStarted)
 				{
-					//var ipInfo = IPInfo.GetIPInfo(item.MacAddress.Replace(':', '-').ToLowerInvariant());
-					var ipInfo = IPInfo2.GetIPInfo(item.MacAddress.ToLowerInvariant());
-					if (ipInfo != null)
+					dataGridView1.Rows.Clear();
+					foreach (var item in _netsh.GetConnectedPeers())
 					{
-						dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
-					}
-					else
-					{
-						dataGridView1.Rows.Add("Unknown", "Unknown", item.MacAddress);
+						Thread thread = new Thread(new ParameterizedThreadStart(DataGridAddConnectionSafe));
+						thread.Start(item.MacAddress);
 					}
 				}
 			}
@@ -242,7 +267,7 @@ namespace NetShare.Cilent
 
 		private void ConfigSave()
 		{
-			_netsh.SetConnectionSettings(txtSSID.Text, 10);
+			_netsh.SetConnectionSettings(txtSSID.Text, (int)nudMaxPeers.Value);
 			_netsh.SetPassword(txtPassword.Text);
 			new Configuration(chckIsAutostart.Checked, (cmbShareAdapter.SelectedItem as SharableConnection).Guid).Write();
 		}
@@ -255,6 +280,8 @@ namespace NetShare.Cilent
 			}
 		}
 
+		#region Методы доступа к атрибутам сборки
+
 		private void About()
 		{
 			labelProductName.Text = AssemblyProduct;
@@ -262,8 +289,6 @@ namespace NetShare.Cilent
 			labelCopyright.Text = AssemblyCopyright;
 			labelCompanyName.Text = AssemblyCompany;
 		}
-
-		#region Методы доступа к атрибутам сборки
 
 		public string AssemblyTitle
 		{
