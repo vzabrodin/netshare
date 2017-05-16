@@ -1,8 +1,8 @@
 #include <idp.iss>
 
 #define MyAppName "NetShare"
-#define MyAppVersion "1.0.0.128"
-#define MyAppTextVersion "v1.00 build 128"
+#define MyAppVersion "1.0.0.130"
+#define MyAppTextVersion "v1.00 build 130"
 #define MyAppPublisher "Vitaliy Zabrodin"
 #define MyAppCopyright "Copyright (c) 2017 Vitaliy Zabrodin"
 #define MyAppExeName "NetShare.exe"

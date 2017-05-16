@@ -5,6 +5,7 @@ using System.ServiceProcess;
 using System.Reflection;
 using NetShare.Host;
 using System.Threading;
+using System.Diagnostics;
 
 namespace NetShare.Cilent
 {
@@ -366,5 +367,10 @@ namespace NetShare.Cilent
 			}
 		}
 		#endregion
+
+		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			Process.Start("changelog.txt");
+		}
 	}
 }

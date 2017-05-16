@@ -59,6 +59,7 @@
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelCopyright = new System.Windows.Forms.Label();
 			this.labelCompanyName = new System.Windows.Forms.Label();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
 			this.tabControl1.SuspendLayout();
 			this.tabSettings.SuspendLayout();
 			this.panSettingsInput.SuspendLayout();
@@ -336,6 +337,7 @@
 			this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
 			this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
 			this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
+			this.tableLayoutPanel.Controls.Add(this.linkLabel1, 2, 5);
 			this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -366,7 +368,9 @@
 			// 
 			// labelProductName
 			// 
-			this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.labelProductName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelProductName.Location = new System.Drawing.Point(120, 0);
 			this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
 			this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
@@ -386,7 +390,7 @@
 			this.labelVersion.Size = new System.Drawing.Size(223, 17);
 			this.labelVersion.TabIndex = 0;
 			this.labelVersion.Text = "Версия";
-			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// labelCopyright
 			// 
@@ -398,7 +402,7 @@
 			this.labelCopyright.Size = new System.Drawing.Size(223, 17);
 			this.labelCopyright.TabIndex = 21;
 			this.labelCopyright.Text = "Авторские права";
-			this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
 			// labelCompanyName
 			// 
@@ -410,7 +414,20 @@
 			this.labelCompanyName.Size = new System.Drawing.Size(223, 17);
 			this.labelCompanyName.TabIndex = 22;
 			this.labelCompanyName.Text = "Название организации";
-			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+			// 
+			// linkLabel1
+			// 
+			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.linkLabel1.AutoSize = true;
+			this.linkLabel1.Location = new System.Drawing.Point(285, 192);
+			this.linkLabel1.Name = "linkLabel1";
+			this.linkLabel1.Size = new System.Drawing.Size(58, 13);
+			this.linkLabel1.TabIndex = 23;
+			this.linkLabel1.TabStop = true;
+			this.linkLabel1.Text = "Changelog";
+			this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 			// 
 			// FormMain
 			// 
@@ -435,6 +452,7 @@
 			this.contextMenuStrip1.ResumeLayout(false);
 			this.tabAbout.ResumeLayout(false);
 			this.tableLayoutPanel.ResumeLayout(false);
+			this.tableLayoutPanel.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
 			this.ResumeLayout(false);
 
@@ -470,6 +488,7 @@
 		private System.Windows.Forms.PictureBox logoPictureBox;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem toolstripDatagridUpdate;
+		private System.Windows.Forms.LinkLabel linkLabel1;
 	}
 }
 
