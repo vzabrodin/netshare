@@ -180,7 +180,7 @@ namespace NetShare.Cilent
 		{
 			string MacAddress = (string)macAddress;
 			IPInfo2 ipInfo = null;
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				ipInfo = IPInfo2.GetIPInfo(MacAddress.ToLowerInvariant());
 				if (ipInfo != null)
@@ -188,7 +188,7 @@ namespace NetShare.Cilent
 					dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
 					return;
 				}
-				Thread.Sleep(5000);
+				Thread.Sleep(1000);
 			}
 			dataGridView1.Rows.Add("Unknown", "Unknown", MacAddress);
 		}
