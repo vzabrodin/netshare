@@ -17,8 +17,7 @@ OutputDir=bin
 OutputBaseFilename=NetShareSetup
 SolidCompression=yes
 UsePreviousAppDir=yes
-UninstallDisplayName=NetShare
-UninstallDisplayIcon={app}\NetShare.exe
+UninstallDisplayName={#MyAppName}
 SetupIconFile=resourses\install-icon.ico
 MinVersion=6.1
 AllowRootDirectory=yes
@@ -31,7 +30,7 @@ AllowNoIcons=yes
 AlwaysUsePersonalGroup=yes
 CloseApplications=no
 AppCopyright={#MyAppCopyright}
-VersionInfoProductName=NetShare
+VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
 VersionInfoProductTextVersion={#MyAppTextVersion}
 VersionInfoVersion={#MyAppVersion}
@@ -54,7 +53,7 @@ english.DotNetInstalling=Microsoft Framework 4.0 is installing. Please wait...
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "..\NetShare.Cilent\bin\Debug\NetShare.Cilent.exe"; DestDir: "{app}"; DestName: "NetShare.exe"; Flags: ignoreversion
+Source: "..\NetShare.Cilent\bin\Debug\NetShare.Cilent.exe"; DestDir: "{app}"; DestName: "{#MyAppExeName}"; Flags: ignoreversion
 Source: "..\NetShare.Service\bin\Debug\NetShare.Service.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\NetShare.Host\bin\Debug\NetShare.Host.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\NetShare.ICS\bin\Debug\NetShare.ICS.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -64,9 +63,9 @@ Source: "..\changelog.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 [Run]
 Filename: "taskkill"; Parameters: "/f /im NetShare.Service.exe"; Flags: runhidden
-Filename: "taskkill"; Parameters: "/f /im NetShare.exe"; Flags: runhidden
+Filename: "taskkill"; Parameters: "/f /im {#MyAppExeName}"; Flags: runhidden
 Filename: "{app}\NetShare.Service.exe"; Parameters: "/install"; Flags: runhidden
-Filename: "{app}\NetShare.exe"; Flags: postinstall skipifsilent shellexec; Description: "Run {#MyAppName}"
+Filename: "{app}\{#MyAppExeName}"; Flags: postinstall skipifsilent shellexec; Description: "Run {#MyAppName}"
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\{#MyAppExeName}";
@@ -74,17 +73,18 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [UninstallDelete]
-Type: files; Name: "{app}\NetShare.exe"
+Type: files; Name: "{app}\{#MyAppExeName}"
 Type: files; Name: "{app}\NetShare.Service.exe"
 Type: files; Name: "{app}\NetShare.Host.dll"
 Type: files; Name: "{app}\NetShare.ICS.dll"
 Type: files; Name: "{app}\NetShare.Wlan.dll"
 Type: files; Name: "{app}\license.txt"
 Type: files; Name: "{app}\changelog.txt"
+Type: filesandordirs; Name: "{app}"
 
 [UninstallRun]
 Filename: "taskkill"; Parameters: "/f /im NetShare.Service.exe"; Flags: runhidden
-Filename: "taskkill"; Parameters: "/f /im NetShare.exe"; Flags: runhidden
+Filename: "taskkill"; Parameters: "/f /im {#MyAppExeName}"; Flags: runhidden
 Filename: "{app}\NetShare.Service.exe"; Parameters: "/uninstall"; Flags: runhidden
 
 [Code]
