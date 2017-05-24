@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.ClientConsole", "NetShare.ClientConsole\NetShare.ClientConsole.csproj", "{FE233A64-0234-45DB-BA54-9470CD0EFBB4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.WLAN", "NetShare.WLAN\NetShare.WLAN.csproj", "{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetShare.Host", "NetShare.Host\NetShare.Host.csproj", "{E5966C38-D683-46F6-B21A-47683BF64B6A}"
@@ -32,14 +30,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Debug|x86.Build.0 = Debug|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Release|x86.ActiveCfg = Release|Any CPU
-		{FE233A64-0234-45DB-BA54-9470CD0EFBB4}.Release|x86.Build.0 = Release|Any CPU
 		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54E6CB65-4537-4FD8-ADFB-7A3DBF56D936}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -83,13 +73,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(AutomaticVersions) = postSolution
-		UpdateAssemblyVersion = True
-		UpdateAssemblyFileVersion = True
-		UpdateAssemblyInfoVersion = True
-		AssemblyVersionSettings = None.None.None.IncrementOnDemand
-		AssemblyFileVersionSettings = None.None.None.IncrementOnDemand
-		AssemblyInfoVersionSettings = None.None.None.IncrementOnDemand
 	EndGlobalSection
 EndGlobal
