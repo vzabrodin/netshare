@@ -26,3 +26,4 @@ x Throws exception if Wi-Fi adapter doesn't exist or doesn't support hosted netw
 NetShare v1.00, build 130 (2017-05-15)
 ======================================
 x Doesn't retrieve a hostname of connected peer in some cases
+x Unhandled exception raises when changelog button pressed, but changelog file doesn't exist

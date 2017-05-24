@@ -118,22 +118,17 @@ namespace NetShare.Cilent
 			}
 
 			chckIsAutostart.Checked = conf.IsAutostart;
-
 			UpdateControls();
+			UpdateConnectionsListSafe();
 
 			_netsh.ConnectionsListChanged += _netsh_OnConnectionsListChanged;
 			_netsh.HostedNetworkStarted += _netsh_HostedNetworkStarted;
 			_netsh.HostedNetworkStopped += _netsh_HostedNetworkStopped;
 		}
 
-		private void FormMain_Shown(object sender, EventArgs e)
-		{
-			UpdateConnectionsListChangedSafe();
-		}
-
 		private void cmDataGridUpdate_Click(object sender, EventArgs e)
 		{
-			UpdateConnectionsListChangedSafe();
+			UpdateConnectionsListSafe();
 		}
 
 		private void _netsh_HostedNetworkStarted(NetShareHost hostedNetworkManager)
@@ -176,31 +171,36 @@ namespace NetShare.Cilent
 			}
 		}
 
-		private void DataGridAddConnectionSafe(object macAddress)
+		private void DataGridAddConnectionThread(object macAddress)
 		{
 			string MacAddress = (string)macAddress;
-			IPInfo2 ipInfo = null;
-			for (int i = 0; i < 10; i++)
+			try
 			{
-				ipInfo = IPInfo2.GetIPInfo(MacAddress.ToLowerInvariant());
-				if (ipInfo != null)
+				IPInfo2 ipInfo = null;
+				for (int i = 0; i < 10; i++)
 				{
-					dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
-					return;
+					ipInfo = IPInfo2.GetIPInfo(MacAddress.ToLowerInvariant());
+					if (ipInfo != null)
+					{
+						dataGridView1.Rows.Add(ipInfo.HostName, ipInfo.IPAddress, ipInfo.MacAddress);
+						return;
+					}
+					Thread.Sleep(1000);
 				}
-				Thread.Sleep(1000);
 			}
-			dataGridView1.Rows.Add("Unknown", "Unknown", MacAddress);
+			catch (ThreadAbortException)
+			{
+			}
 		}
 
 		private delegate void DelegateVoid();
-		private void UpdateConnectionsListChangedSafe()
+		private void UpdateConnectionsListSafe()
 		{
 			if (dataGridView1.InvokeRequired)
 			{
 				try
 				{
-					Invoke(new DelegateVoid(UpdateConnectionsListChangedSafe));
+					Invoke(new DelegateVoid(UpdateConnectionsListSafe));
 				}
 				catch
 				{
@@ -213,7 +213,7 @@ namespace NetShare.Cilent
 					dataGridView1.Rows.Clear();
 					foreach (var item in _netsh.GetConnectedPeers())
 					{
-						Thread thread = new Thread(new ParameterizedThreadStart(DataGridAddConnectionSafe));
+						Thread thread = new Thread(new ParameterizedThreadStart(DataGridAddConnectionThread));
 						thread.Start(item.MacAddress);
 					}
 				}
@@ -222,7 +222,7 @@ namespace NetShare.Cilent
 
 		private void _netsh_OnConnectionsListChanged(NetShareHost hostedNetworkManager)
 		{
-			UpdateConnectionsListChangedSafe();
+			UpdateConnectionsListSafe();
 		}
 
 		private void chckPasswordHide_CheckedChanged(object sender, EventArgs e)
@@ -281,6 +281,17 @@ namespace NetShare.Cilent
 		}
 
 		#region Методы доступа к атрибутам сборки
+
+		private void llChangelog_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			try
+			{
+				Process.Start("changelog.txt");
+			}
+			catch
+			{
+			}
+		}
 
 		private void About()
 		{
@@ -367,10 +378,5 @@ namespace NetShare.Cilent
 			}
 		}
 		#endregion
-
-		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			Process.Start("changelog.txt");
-		}
 	}
 }

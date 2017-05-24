@@ -59,7 +59,7 @@
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.labelCopyright = new System.Windows.Forms.Label();
 			this.labelCompanyName = new System.Windows.Forms.Label();
-			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.llChangelog = new System.Windows.Forms.LinkLabel();
 			this.tabControl1.SuspendLayout();
 			this.tabSettings.SuspendLayout();
 			this.panSettingsInput.SuspendLayout();
@@ -337,7 +337,7 @@
 			this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
 			this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
 			this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
-			this.tableLayoutPanel.Controls.Add(this.linkLabel1, 2, 5);
+			this.tableLayoutPanel.Controls.Add(this.llChangelog, 2, 5);
 			this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel.Location = new System.Drawing.Point(3, 3);
 			this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -416,18 +416,18 @@
 			this.labelCompanyName.Text = "Название организации";
 			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
 			// 
-			// linkLabel1
+			// llChangelog
 			// 
-			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(285, 192);
-			this.linkLabel1.Name = "linkLabel1";
-			this.linkLabel1.Size = new System.Drawing.Size(58, 13);
-			this.linkLabel1.TabIndex = 23;
-			this.linkLabel1.TabStop = true;
-			this.linkLabel1.Text = "Changelog";
-			this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+			this.llChangelog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.llChangelog.AutoSize = true;
+			this.llChangelog.Location = new System.Drawing.Point(285, 192);
+			this.llChangelog.Name = "llChangelog";
+			this.llChangelog.Size = new System.Drawing.Size(58, 13);
+			this.llChangelog.TabIndex = 23;
+			this.llChangelog.TabStop = true;
+			this.llChangelog.Text = "Changelog";
+			this.llChangelog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.llChangelog.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llChangelog_LinkClicked);
 			// 
 			// FormMain
 			// 
@@ -442,7 +442,6 @@
 			this.Text = "NetShare";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
 			this.Load += new System.EventHandler(this.FormMain_Load);
-			this.Shown += new System.EventHandler(this.FormMain_Shown);
 			this.tabControl1.ResumeLayout(false);
 			this.tabSettings.ResumeLayout(false);
 			this.panSettingsInput.ResumeLayout(false);
@@ -488,7 +487,7 @@
 		private System.Windows.Forms.PictureBox logoPictureBox;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem toolstripDatagridUpdate;
-		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.LinkLabel llChangelog;
 	}
 }
 
