@@ -7,6 +7,9 @@ using System.ServiceModel;
 
 namespace NetShare.Host
 {
+	/// <summary>
+	/// Класс для управления точкой доступа Wi-Fi
+	/// </summary>
 	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
 	public class NetShareHost
 	{
@@ -17,13 +20,29 @@ namespace NetShare.Host
 
 		private string _lastErrorMessage;
 
+		/// <summary>
+		/// Представляет метод, коротый будет обрабатывать событие, не имеющее данных
+		/// </summary>
 		public delegate void GenericEvent(NetShareHost hostedNetworkManager);
 
+		/// <summary>
+		/// Происходит при подключении или отключении клиента от точки доступа
+		/// </summary>
 		public event GenericEvent ConnectionsListChanged;
-		public event GenericEvent HostedNetworkStarted;
-		public event GenericEvent HostedNetworkStopped;
-		public event GenericEvent HostedNetworkAvailable;
 
+		/// <summary>
+		/// Происходит при запуске точки доступа
+		/// </summary>
+		public event GenericEvent HostedNetworkStarted;
+
+		/// <summary>
+		/// Происходит при остановке точки доступа
+		/// </summary>
+		public event GenericEvent HostedNetworkStopped;
+
+		/// <summary>
+		/// Инициализирует экземпляр класса NetShareHost
+		/// </summary>
 		public NetShareHost()
 		{
 			_wlanManager = new WlanManager();
@@ -31,18 +50,8 @@ namespace NetShare.Host
 
 			_wlanManager.StationJoin += _wlanManager_StationStateChange;
 			_wlanManager.StationLeave += _wlanManager_StationStateChange;
-			//_wlanManager.StationStateChange += _wlanManager_StationStateChange;
 			_wlanManager.HostedNetworkStarted += _wlanManager_HostedNetworkStarted;
 			_wlanManager.HostedNetworkStopped += _wlanManager_HostedNetworkStopped;
-			_wlanManager.HostedNetworkAvailable += _wlanManager_HostedNetworkAvailable;
-		}
-
-		private void _wlanManager_HostedNetworkAvailable(object sender, EventArgs e)
-		{
-			if (HostedNetworkAvailable != null)
-			{
-				HostedNetworkAvailable(this);
-			}
 		}
 
 		#region "Event Handlers"
@@ -73,11 +82,20 @@ namespace NetShare.Host
 
 		#endregion
 
+		/// <summary>
+		/// Возвращает текст последней ошибки
+		/// </summary>
+		/// <returns></returns>
 		public string GetLastError()
 		{
 			return _lastErrorMessage;
 		}
 
+		/// <summary>
+		/// Запускает точку доступа с указанным адаптером для ICS
+		/// </summary>
+		/// <param name="sharedConnectionGuid">GUID адаптера для ICS</param>
+		/// <returns>true, если точка доступа успешно запущена; false, если возникла ошибка. Вызовите GetLastError(), чтобы получить результат ошибки</returns>
 		public bool Start(Guid sharedConnectionGuid)
 		{
 			var conns = GetSharableConnections();
@@ -92,6 +110,11 @@ namespace NetShare.Host
 			return Start(sharedConnection);
 		}
 
+		/// <summary>
+		/// Запускает точку доступа с указанным адаптером для ICS
+		/// </summary>
+		/// <param name="sharedConnectionGuid">адаптер для ICS</param>
+		/// <returns>true, если точка доступа успешно запущена; false, если возникла ошибка. Вызовите GetLastError(), чтобы получить результат ошибки</returns>
 		public bool Start(SharableConnection sharedConnection)
 		{
 			try
@@ -150,6 +173,10 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Останавливает точку доступа
+		/// </summary>
+		/// <returns>true, если точка доступа успешно остановлена; false, если возникла ошибка. Вызовите GetLastError(), чтобы получить результат ошибки</returns>
 		public bool Stop()
 		{
 			try
@@ -169,6 +196,12 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Задаёт настройки точки доступа
+		/// </summary>
+		/// <param name="ssid">имя точки доступа</param>
+		/// <param name="maxNumberOfPeers">максимальное количество подключенных клиентов</param>
+		/// <returns>true, если новые настройки успешно применены; false, если возникла ошибка. Вызовите GetLastError(), чтобы получить результат ошибки</returns>
 		public bool SetConnectionSettings(string ssid, int maxNumberOfPeers)
 		{
 			try
@@ -182,6 +215,10 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Возвращает настройки точки доступа
+		/// </summary>
+		/// <returns>экземпляр класса ConnectionSettings, коротый содержит имя точки доступа и максимальное количество подключенных клиентов</returns>
 		public ConnectionSettings GetConnectionSettings()
 		{
 			try
@@ -203,6 +240,10 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Возвращает список подключенных клиентов
+		/// </summary>
+		/// <returns>список подключенных клиентов</returns>
 		public IEnumerable<SharableConnection> GetSharableConnections()
 		{
 			List<IcsConnection> connections;
@@ -230,6 +271,11 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Задаёт пароль точки доступа
+		/// </summary>
+		/// <param name="password">пароль</param>
+		/// <returns>true, если новый пароль успешно применен; false, если возникла ошибка. Вызовите GetLastError(), чтобы получить результат ошибки</returns>
 		public bool SetPassword(string password)
 		{
 			try
@@ -243,6 +289,10 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Возвращает пароль точки доступа
+		/// </summary>
+		/// <returns>пароль</returns>
 		public string GetPassword()
 		{
 			try
@@ -261,6 +311,9 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// true - если точка доступа запущена, иначе - false
+		/// </summary>
 		public bool IsStarted
 		{
 			get
@@ -276,6 +329,9 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// true - если работа в режиме точки доступа Wi-Fi поддерживается, иначе - false
+		/// </summary>
 		public bool IsSupported
 		{
 			get
@@ -284,6 +340,10 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Возвращает список подключенных к точке доступа клиентов
+		/// </summary>
+		/// <returns>список подключенных клиентов</returns>
 		public IEnumerable<ConnectedPeer> GetConnectedPeers()
 		{
 			foreach (var v in _wlanManager.Stations)
@@ -292,6 +352,10 @@ namespace NetShare.Host
 			}
 		}
 
+		/// <summary>
+		/// Возвращает текущее ICS подключение
+		/// </summary>
+		/// <returns></returns>
 		public SharableConnection GetSharedConnection()
 		{
 			return _currentSharedConnection;

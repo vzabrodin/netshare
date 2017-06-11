@@ -254,12 +254,12 @@ namespace NetShare.Cilent
 		{
 			if (string.IsNullOrEmpty(txtSSID.Text))
 			{
-				MessageBox.Show("SSID can not be empty");
+				MessageBox.Show("SSID can not be empty", "NetShare");
 				return false;
 			}
 			if (string.IsNullOrEmpty(txtPassword.Text) || txtPassword.Text.Length < 8 || txtPassword.Text.Length > 63)
 			{
-				MessageBox.Show("Password must be between 8 or 63 characters");
+				MessageBox.Show("Password must be between 8 or 63 characters", "NetShare");
 				return false;
 			}
 			return true;

@@ -17,12 +17,14 @@ OutputDir=bin
 OutputBaseFilename=NetShareSetup
 SolidCompression=yes
 UsePreviousAppDir=yes
-UninstallDisplayName={#MyAppName}
 SetupIconFile=resourses\install-icon.ico
+UninstallDisplayName={#MyAppName}
+UninstallDisplayIcon={app}\{#MyAppExeName}
 MinVersion=6.1
 AllowRootDirectory=yes
 CreateUninstallRegKey=yes
 DisableProgramGroupPage=auto
+DisableWelcomePage=no
 DefaultGroupName={#MyAppName}
 AlwaysShowGroupOnReadyPage=yes
 AlwaysShowDirOnReadyPage=yes
@@ -38,6 +40,7 @@ VersionInfoCompany={#MyAppPublisher}
 VersionInfoTextVersion={#MyAppTextVersion}
 VersionInfoCopyright={#MyAppCopyright}
 ShowTasksTreeLines=yes
+Uninstallable=yes
 LicenseFile=..\LICENSE
 
 [Languages]
